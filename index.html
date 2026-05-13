@@ -1,211 +1,1135 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Campus Crawings</title>
+    <title>Campus Crawiiings</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        body { background: #0a0a0a; color: white; font-family: 'Segoe UI', sans-serif; }
-        .navbar { background: linear-gradient(90deg, #000000, #1a0000); box-shadow: 0 0 15px rgba(255,0,0,0.3); }
-        .navbar-brand { color: #ff2c2c !important; letter-spacing: 1px; }
-        .nav-link { color: #ddd !important; transition: 0.3s; }
-        .nav-link:hover { color: #ff2c2c !important; }
-        .navbar-toggler { border: 1px solid red; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* HOME */
-        .home-page { height: 90vh; display: flex; justify-content: center; align-items: center; }
-        .home-card { background: #111; border: 1px solid rgba(255,0,0,0.3); border-radius: 15px; padding: 40px; text-align: center; box-shadow: 0 0 25px rgba(255,0,0,0.2); animation: fadeSlide 0.8s ease-in-out; }
-        .home-card h1 { color: #ff2c2c; font-weight: bold; letter-spacing: 2px; }
-        @keyframes fadeSlide { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-        .btn-red { background: linear-gradient(45deg, #ff0000, #b30000); border: none; color: white; padding: 10px 20px; border-radius: 8px; transition: 0.3s; cursor: pointer; }
-        .btn-red:hover { transform: scale(1.05); box-shadow: 0 0 10px red; color: white; }
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'DM Sans', sans-serif;
+        }
 
-        /* MENU */
-        .menu-section { padding: 60px 20px; background: #0a0a0a; }
-        .menu-section h2 { color: #ff2c2c; text-align: center; margin-bottom: 40px; letter-spacing: 2px; font-weight: bold; }
-        .menu-card { background: #111; border: 1px solid rgba(255,0,0,0.3); border-radius: 12px; padding: 20px; margin-bottom: 20px; transition: 0.3s; }
-        .menu-card:hover { box-shadow: 0 0 15px rgba(255,0,0,0.4); transform: translateY(-3px); }
-        .menu-card h5 { color: #ff2c2c; margin-bottom: 8px; font-weight: bold; }
-        .menu-card .price { color: #00e676; font-weight: bold; font-size: 20px; margin: 8px 0; }
-        .menu-card .category { color: #aaa; font-size: 13px; margin-bottom: 10px; }
-        .badge-available { background: #00e676; color: #000; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
-        .badge-unavailable { background: #ff2c2c; color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
-        .loading { text-align: center; color: #aaa; padding: 40px; font-size: 18px; }
+        /* ── NAVBAR ── */
+        .navbar {
+            background: linear-gradient(90deg, #000000, #1a0000);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-        /* ORDERS */
-        .order-section { padding: 60px 20px; background: #0d0d0d; }
-        .order-section h2 { color: #ff2c2c; text-align: center; margin-bottom: 40px; letter-spacing: 2px; font-weight: bold; }
-        .order-form { background: #111; border: 1px solid rgba(255,0,0,0.3); border-radius: 15px; padding: 40px; max-width: 600px; margin: 0 auto; box-shadow: 0 0 25px rgba(255,0,0,0.1); }
-        .order-form label { color: #ddd; margin-bottom: 5px; display: block; }
-        .order-form input, .order-form select { background: #1a1a1a; border: 1px solid rgba(255,0,0,0.3); color: white; border-radius: 8px; padding: 10px; width: 100%; margin-bottom: 20px; }
-        .order-form input:focus, .order-form select:focus { outline: none; border-color: #ff2c2c; box-shadow: 0 0 8px rgba(255,0,0,0.3); }
-        .order-form select option { background: #1a1a1a; }
-        .success-msg { color: #00e676; text-align: center; font-weight: bold; margin-top: 15px; display: none; }
-        .error-msg { color: #ff2c2c; text-align: center; font-weight: bold; margin-top: 15px; display: none; }
+        .navbar-brand {
+            color: #ff2c2c !important;
+            letter-spacing: 1px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+        }
 
-        /* FOOTER */
-        footer { background: #000; text-align: center; padding: 20px; color: #555; border-top: 1px solid rgba(255,0,0,0.2); }
+        .nav-link {
+            color: #ddd !important;
+            transition: 0.3s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .nav-link:hover,
+        .nav-link.active-link {
+            color: #ff2c2c !important;
+        }
+
+        .navbar-toggler {
+            border: 1px solid red;
+        }
+
+        /* ── HOME SECTION ── */
+        #home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(90vh - 56px);
+            text-align: center;
+            padding: 40px 20px;
+            background: #0a0a0a;
+        }
+
+        #home img {
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 0 40px rgba(255, 44, 44, 0.2);
+        }
+
+        #home h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 38px;
+            letter-spacing: 2px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        #home p {
+            color: #888;
+            font-size: 15px;
+            margin-bottom: 32px;
+        }
+
+        .now {
+            color: #ff2c2c;
+        }
+
+        /* Contact icons */
+        .contact-icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #111;
+            border: 2px solid #ff2c2c;
+            box-shadow: 0 0 12px rgba(255, 44, 44, 0.3);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .contact-icon-btn:hover {
+            background: #ff2c2c;
+            box-shadow: 0 0 22px rgba(255, 44, 44, 0.7);
+            transform: scale(1.12);
+        }
+
+        .contact-icon-btn:hover svg {
+            fill: black;
+        }
+
+        /* ── ABOUT / SERVICES hidden by default ── */
+        #about,
+        #services {
+            display: none;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        /* ── SHARED SECTION STYLES (About Us & Services both use these) ── */
+        .section {
+            padding: 90px 60px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section:nth-child(odd) {
+            background: #0a0a0a;
+        }
+
+        .section:nth-child(even) {
+            background: #0e0e0e;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff2c2c, transparent);
+        }
+
+        .text-block {
+            flex: 1;
+        }
+
+        .section-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: #ff2c2c;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .section-heading {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 48px;
+            line-height: 1.1;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .section-heading span {
+            color: #ff2c2c;
+        }
+
+        .section-para {
+            font-size: 15.5px;
+            line-height: 1.85;
+            color: #aaa;
+            font-weight: 300;
+        }
+
+        .section-para p {
+            margin-bottom: 10px;
+        }
+
+        .image-block {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-block img {
+            width: 100%;
+            max-width: 420px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 44, 44, 0.25);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.15), 0 20px 60px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .image-block img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 60px rgba(255, 0, 0, 0.3), 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .short-text-section {
+            padding: 70px 60px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            background: #111;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .short-text-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff2c2c, transparent);
+        }
+
+        .short-quote {
+            flex: 1;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            color: #fff;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            text-align: right;
+        }
+
+        .short-quote span {
+            color: #ff2c2c;
+        }
+
+        .red-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff2c2c, transparent);
+        }
+
+        /* FOUNDERS */
+        .founders-section {
+            padding: 90px 60px;
+            background: #0e0e0e;
+            text-align: center;
+            position: relative;
+        }
+
+        .founders-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff2c2c, transparent);
+        }
+
+        .founders-title-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 13px;
+            letter-spacing: 4px;
+            color: #ff2c2c;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .founders-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 52px;
+            color: #fff;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .founders-title span {
+            color: #ff2c2c;
+        }
+
+        .founders-tagline {
+            font-size: 16px;
+            color: #888;
+            font-style: italic;
+            margin-bottom: 50px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .founder-single {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .founder-single img {
+            width: 255px;
+            height: 180px;
+            border-radius: 16px;
+            object-fit: cover;
+            border: 3px solid #ff2c2c;
+            box-shadow: 0 0 30px rgba(255, 44, 44, 0.4);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .founder-single img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 44, 44, 0.6);
+        }
+
+        .founder-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            color: #fff;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .founder-role {
+            font-size: 13px;
+            color: #ff2c2c;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            font-weight: 500;
+        }
+
+        .founder-bio {
+            font-size: 14.5px;
+            color: #888;
+            line-height: 1.8;
+            font-weight: 300;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Back to Home button */
+        .back-home-btn {
+            display: block;
+            margin: 0 auto 60px;
+            padding: 12px 36px;
+            background: transparent;
+            border: 2px solid #ff2c2c;
+            color: #ff2c2c;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            letter-spacing: 3px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: fit-content;
+        }
+
+        .back-home-btn:hover {
+            background: #ff2c2c;
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 44, 44, 0.5);
+        }
+
+        /* ── SERVICES: unique components only ── */
+
+        /* Hero banner for services */
+        .srv-hero {
+            padding: 90px 60px;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .srv-hero::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff2c2c, transparent);
+        }
+
+        .srv-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ff2c2c, transparent);
+        }
+
+        /* subtitle under hero heading — same DM Sans style as section-para */
+        .srv-hero-sub {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15.5px;
+            line-height: 1.85;
+            color: #aaa;
+            font-weight: 300;
+            max-width: 580px;
+            margin-top: 6px;
+        }
+
+        /* 2×2 card grid */
+        .srv-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .srv-card {
+            padding: 52px 48px;
+            border: 0.5px solid rgba(255, 44, 44, 0.1);
+            position: relative;
+            transition: background 0.3s;
+        }
+
+        .srv-card:nth-child(odd) {
+            background: #0e0e0e;
+        }
+
+        .srv-card:nth-child(even) {
+            background: #111;
+        }
+
+        .srv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: #ff2c2c;
+            transition: height 0.4s ease;
+        }
+
+        .srv-card:hover::before {
+            height: 100%;
+        }
+
+        .srv-card:hover {
+            background: #141414;
+        }
+
+        .srv-card-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            background: rgba(255, 44, 44, 0.07);
+            border: 1px solid rgba(255, 44, 44, 0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        /* card title — Bebas Neue, same weight as section-heading but slightly smaller */
+        .srv-card-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 28px;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            margin-bottom: 14px;
+        }
+
+        /* card desc — identical to section-para */
+        .srv-card-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15.5px;
+            color: #aaa;
+            line-height: 1.85;
+            font-weight: 300;
+        }
+
+        .srv-card-tag {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: rgba(255, 44, 44, 0.09);
+            border: 1px solid rgba(255, 44, 44, 0.28);
+            color: #ff2c2c;
+            font-weight: 500;
+        }
+
+        /* How It Works block */
+        .srv-how {
+            padding: 90px 60px;
+            background: #0a0a0a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .srv-how::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff2c2c, transparent);
+        }
+
+        .srv-steps-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        /* big faded step number */
+        .srv-step-num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 56px;
+            color: rgba(255, 44, 44, 0.13);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        /* step heading — same Bebas style */
+        .srv-step-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        /* step body — same DM Sans as section-para */
+        .srv-step-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15.5px;
+            color: #aaa;
+            line-height: 1.85;
+            font-weight: 300;
+        }
+
+        /* CTA block */
+        .srv-cta {
+            padding: 90px 60px;
+            background: #0e0e0e;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .srv-cta::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #ff2c2c, transparent);
+        }
+
+        /* cta body — same DM Sans as section-para */
+        .srv-cta-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15.5px;
+            color: #aaa;
+            font-weight: 300;
+            line-height: 1.85;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .srv-contact-btn {
+            display: inline-block;
+            padding: 13px 44px;
+            border: 2px solid #ff2c2c;
+            color: #ff2c2c;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 19px;
+            letter-spacing: 3px;
+            border-radius: 4px;
+            background: transparent;
+            cursor: pointer;
+            transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+            text-decoration: none;
+        }
+
+        .srv-contact-btn:hover {
+            background: #ff2c2c;
+            color: #000;
+            box-shadow: 0 0 24px rgba(255, 44, 44, 0.5);
+        }
+
+        /* ── LOADING SCREEN ── */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #loading-screen.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-logo {
+            width: 210px;
+            height: 210px;
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(255, 44, 44, 0.5);
+            animation: logoPulse 1.2s ease-in-out infinite alternate;
+        }
+
+        .loader-bar-wrap {
+            width: 160px;
+            height: 3px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .loader-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff2c2c, #ff6b6b);
+            border-radius: 10px;
+            animation: loadBar 1.8s ease forwards;
+        }
+
+        @keyframes logoPulse {
+            from {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(255, 44, 44, 0.3);
+            }
+
+            to {
+                transform: scale(1.05);
+                box-shadow: 0 0 55px rgba(255, 44, 44, 0.6);
+            }
+        }
+
+        @keyframes loadBar {
+            0% {
+                width: 0%;
+            }
+
+            60% {
+                width: 80%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+
+            .section,
+            .short-text-section {
+                flex-direction: column !important;
+                padding: 50px 24px;
+                gap: 30px;
+            }
+
+            .section-heading {
+                font-size: 34px;
+            }
+
+            .short-quote {
+                text-align: center;
+                font-size: 26px;
+            }
+
+            .founders-section {
+                padding: 50px 24px;
+            }
+
+            .founders-title {
+                font-size: 36px;
+            }
+
+            .srv-hero,
+            .srv-how,
+            .srv-cta {
+                padding: 50px 24px;
+            }
+
+            .srv-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .srv-steps-row {
+                grid-template-columns: 1fr;
+            }
+
+            .srv-card {
+                padding: 36px 24px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"><b>CAMPUS CRAWINGS</b></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
-                <li class="nav-item"><a class="nav-link" href="#order">Order</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
-            </ul>
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen">
+        <img class="loader-logo" src="https://res.cloudinary.com/dztcdyco0/image/upload/v1778556520/campus_crawings_logo_lcefr8.jpg" alt="Logo">
+        <div class="loader-bar-wrap">
+            <div class="loader-bar"></div>
         </div>
     </div>
-</nav>
 
-<!-- HOME -->
-<div class="home-page" id="home">
-    <div class="home-card">
-        <h1>GODAVARI RUCHULLU</h1>
-        <p class="mt-3 text-secondary">SMEC</p>
-        <button class="btn-red mt-3" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">
-            Explore Menu
-        </button>
-    </div>
-</div>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#" onclick="showSection('home'); return false;">
+                <img src="https://res.cloudinary.com/dztcdyco0/image/upload/v1778556520/campus_crawings_logo_lcefr8.jpg" height="40" width="40" style="border-radius: 6px;">
+                <b>Campus Crawiiings</b>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active-link" id="nav-home" href="#" onclick="showSection('home'); return false;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-about" href="#" onclick="showSection('about'); return false;">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="nav-services" href="#" onclick="showSection('services'); return false;">Our Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="scrollToContact(); return false;">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-<!-- MENU SECTION -->
-<div class="menu-section" id="menu">
-    <h2>OUR MENU</h2>
-    <div class="container">
-        <div class="row" id="menu-container">
-            <div class="loading">⏳ Loading menu...</div>
+    <!-- HOME SECTION -->
+    <div id="home">
+        <img src="https://res.cloudinary.com/dztcdyco0/image/upload/v1778556520/campus_crawings_logo_lcefr8.jpg" height="200" width="200">
+        <div>
+            <h3>Your Canteen, <span class="now">Now Online</span></h3>
+            <p>Smart digital solutions for modern campuses.</p>
+        </div>
+        <div class="text-center mt-2" id="contact-section">
+            <h4 style="color: #ff2c2c; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-family: 'Bebas Neue', sans-serif; font-size: 20px;">Contact Us</h4>
+            <div class="d-flex gap-3 justify-content-center">
+                <a href="https://www.instagram.com/campus_crawiiings/?hl=en" target="_blank" class="contact-icon-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#ff2c2c" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+                </a>
+                <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=campuscrawiiings@gmail.com" target="_blank" class="contact-icon-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="#ff2c2c" viewBox="0 0 24 24">
+                        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+                    </svg>
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
-<!-- ORDER SECTION -->
-<div class="order-section" id="order">
-    <h2>PLACE YOUR ORDER</h2>
-    <div class="order-form">
-        <label>Your Name</label>
-        <input type="text" id="customer-name" placeholder="Enter your name">
+    <!-- ABOUT SECTION -->
+    <div id="about">
 
-        <label>Your Phone Number</label>
-        <input type="text" id="customer-phone" placeholder="Enter your phone number">
+        <div class="section">
+            <div class="text-block">
+                <p class="section-label">Why We Started</p>
+                <h2 class="section-heading">No Student Should Go <span>Hungry</span></h2>
+                <div class="section-para">
+                    <p>It started with a simple observation — students rushing to the canteen during lunch break, only to find the food had run out. Sad faces, empty plates, and no time left before the next class. We saw it happen every single day and we couldn't ignore it.</p>
+                    <p>The canteen was doing its best, but without knowing how many students were coming or what they wanted, preparing the right amount of food was always a guess. Some days too little, some days too much — and students always paid the price.</p>
+                    <p>We asked ourselves: what if the canteen knew your order before you even arrived? What if you could place your order from your classroom, your hostel room, or while walking across campus — and your food was hot and ready the moment you got there?</p>
+                    <p>That question became our mission. Campus Crawiiings was born out of real frustration, real hunger, and a real desire to fix something broken in everyday campus life. We are not just a food ordering app — we are the solution to a problem every student knows too well.</p>
+                </div>
+            </div>
+            <div class="image-block">
+                <img src="https://res.cloudinary.com/dztcdyco0/image/upload/v1778556528/img-1_flodvu.jpg" alt="Students at canteen">
+            </div>
+        </div>
 
-        <label>Select Item</label>
-        <select id="order-item">
-            <option value="">-- Select a menu item --</option>
-        </select>
+        <div class="red-divider"></div>
 
-        <label>Quantity</label>
-        <input type="number" id="order-qty" placeholder="Enter quantity" min="1" value="1">
+        <div class="short-text-section">
+            <div class="image-block">
+                <img src="https://res.cloudinary.com/dztcdyco0/image/upload/v1778556548/img-2_eiy6p5.jpg" alt="Hot food ready">
+            </div>
+            <div class="short-quote">
+                "Order from your seat. <span>Eat</span> without the wait."
+            </div>
+        </div>
 
-        <button class="btn-red w-100" onclick="placeOrder()">Place Order 🍽️</button>
+        <div class="red-divider"></div>
 
-        <div class="success-msg" id="success-msg">✅ Order placed successfully!</div>
-        <div class="error-msg" id="error-msg">❌ Failed to place order. Try again!</div>
+        <div class="section">
+            <div class="text-block">
+                <p class="section-label">How It Works</p>
+                <h2 class="section-heading">Your Order. <span>Ready</span> When You Are.</h2>
+                <div class="section-para">
+                    <p>Students browse the canteen menu online, pick what they want, and place their order — all before they even leave their classroom. No more standing in long queues. No more arriving late and finding empty trays.</p>
+                    <p>The moment an order is placed, an instant notification goes straight to the canteen admin portal. The canteen staff knows exactly what to prepare, how many portions are needed, and when to have it ready.</p>
+                    <p>By the time the student walks through the canteen door, the food is hot, fresh, and waiting. It is that simple. No wasted food, no hungry students, no chaos — just a smarter canteen experience built for the way campus life actually works.</p>
+                </div>
+            </div>
+            <div class="image-block">
+                <img src="https://res.cloudinary.com/dztcdyco0/image/upload/v1778556549/img-3_yv2dnr.jpg" alt="Online food ordering">
+            </div>
+        </div>
+
+        <div class="red-divider"></div>
+
+        <div class="founders-section">
+            <p class="founders-title-label">The Persons Behind It</p>
+            <h2 class="founders-title">Meet the <span>Founders</span></h2>
+            <p class="founders-tagline">"We saw the problem at the canteen queue — so We built the solution."</p>
+            <div class="founder-single">
+                <img src="https://res.cloudinary.com/dztcdyco0/image/upload/v1778556571/founders_gig70e.jpg" alt="Founder">
+                <p class="founder-name">Mr.Purna Sai Yadam <br>& <br>Mr.Sai Varshith Jamalpur</p>
+                <p class="founder-role">Founders</p>
+                <p class="founder-bio">We were students tired of skipping lunch because time ran out. So we built Campus Crawiiings — making sure no one has to go back to class hungry again.</p>
+            </div>
+        </div>
+
+        <div style="background: #0a0a0a; padding: 40px 0;">
+            <button class="back-home-btn" onclick="showSection('home')">← Back to Home</button>
+        </div>
+
     </div>
-</div>
 
-<!-- FOOTER -->
-<footer>
-    <p>© 2025 Campus Crawings — Godavari Ruchullu, SMEC</p>
-</footer>
+    <!-- ═══════════════════════════════════════════
+         SERVICES SECTION
+    ════════════════════════════════════════════ -->
+    <div id="services">
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    const SUPABASE_URL = 'https://whjbnhxaeowncgdpdbzj.supabase.co';
-    const SUPABASE_KEY = 'sb_publishable_U3chvohlT1I-LtjpZtwxhw_E02ZsvtB';
+        <!-- Hero -->
+        <div class="srv-hero">
+            <p class="section-label">What We Offer</p>
+            <h2 class="section-heading">Our <span>Services</span></h2>
+            <p class="srv-hero-sub">Everything your campus canteen needs to go digital — from student-side ordering to real-time kitchen management. Simple, fast, and built for campus life.</p>
+        </div>
 
-    let menuItems = [];
+        <!-- 4 Service Cards -->
+        <div class="srv-cards-grid">
 
-    async function loadMenu() {
-        try {
-            const response = await fetch(`${SUPABASE_URL}/rest/v1/menu_items?select=*`, {
-                headers: {
-                    'apikey': SUPABASE_KEY,
-                    'Authorization': `Bearer ${SUPABASE_KEY}`
-                }
-            });
-            menuItems = await response.json();
-            const container = document.getElementById('menu-container');
-            const select = document.getElementById('order-item');
-            container.innerHTML = '';
-            menuItems.forEach(item => {
-                container.innerHTML += `
-                <div class="col-md-4">
-                    <div class="menu-card">
-                        <h5>${item.name}</h5>
-                        <p class="category">${item.category}</p>
-                        <p class="price">₹${item.price}</p>
-                        <span class="${item.available ? 'badge-available' : 'badge-unavailable'}">
-                            ${item.available ? 'Available' : 'Not Available'}
-                        </span>
+            <div class="srv-card">
+                <div class="srv-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" stroke="#ff2c2c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <rect x="5" y="2" width="14" height="20" rx="2" />
+                        <path d="M9 6h6M9 10h6M9 14h4" />
+                    </svg>
+                </div>
+                <p class="srv-card-title">Pre-order Food</p>
+                <p class="srv-card-desc">Students place their meal orders before they even leave class. No more rushing to the canteen only to find empty trays. Your food is hot, fresh, and waiting the moment you arrive — every single day.</p>
+                <span class="srv-card-tag">For Students</span>
+            </div>
+
+            <div class="srv-card">
+                <div class="srv-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" stroke="#ff2c2c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2" />
+                        <rect x="9" y="3" width="6" height="4" rx="2" />
+                        <path d="M9 12h6M9 16h4" />
+                    </svg>
+                </div>
+                <p class="srv-card-title">Live Menu Viewing</p>
+                <p class="srv-card-desc">Browse today's canteen menu in real time from any device — phone, tablet, or laptop. See what's available, check item status, and plan your meal before you even step foot in the canteen.</p>
+                <span class="srv-card-tag">For Students</span>
+            </div>
+
+            <div class="srv-card">
+                <div class="srv-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" stroke="#ff2c2c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                    </svg>
+                </div>
+                <p class="srv-card-title">Order Tracking & Notifications</p>
+                <p class="srv-card-desc">Get instant updates from the moment your order is placed to when it's ready for pickup. No guessing, no waiting around — just a notification and your meal is ready at the counter.</p>
+                <span class="srv-card-tag">For Students</span>
+            </div>
+
+            <div class="srv-card">
+                <div class="srv-card-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" stroke="#ff2c2c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="14" width="7" height="7" rx="1" />
+                        <rect x="3" y="14" width="7" height="7" rx="1" />
+                    </svg>
+                </div>
+                <p class="srv-card-title">Canteen Admin Portal</p>
+                <p class="srv-card-desc">A powerful dashboard for canteen staff to manage incoming orders, update the live menu, track demand, and eliminate food wastage. Run a smarter, more efficient kitchen backed by real-time data.</p>
+                <span class="srv-card-tag">For Canteen Staff</span>
+            </div>
+
+        </div>
+
+        <div class="red-divider"></div>
+
+        <!-- How It Works -->
+        <div class="srv-how">
+            <p class="section-label">The Process</p>
+            <h2 class="section-heading">Three Steps. <span>Zero</span> Hassle.</h2>
+            <div class="srv-steps-row">
+                <div>
+                    <p class="srv-step-num">01</p>
+                    <p class="srv-step-title">Browse & Order</p>
+                    <p class="srv-step-desc">Open the app, check today's live menu, pick what you want, and place your order — straight from your phone, anytime, anywhere on campus.</p>
+                </div>
+                <div>
+                    <p class="srv-step-num">02</p>
+                    <p class="srv-step-title">Kitchen Gets Notified</p>
+                    <p class="srv-step-desc">Your order hits the canteen admin portal instantly. Staff know exactly what to prepare, how many portions, and when — no confusion, no food waste.</p>
+                </div>
+                <div>
+                    <p class="srv-step-num">03</p>
+                    <p class="srv-step-title">Pick Up & Eat</p>
+                    <p class="srv-step-desc">You get a notification when your food is ready. Walk in, pick up your meal, and get back to what matters — no queue, no wait, no stress.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="red-divider"></div>
+
+        <!-- CTA -->
+        <div class="srv-cta">
+            <p class="section-label">Get In Touch</p>
+            <h2 class="section-heading">Want Campus Crawiiings <span>at Your College?</span></h2>
+            <p class="srv-cta-desc">Reach out and let's bring smarter canteen management to your campus. We would love to hear from you.</p>
+            <a class="srv-contact-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=campuscrawiiings@gmail.com" target="_blank">Contact Us</a>
+        </div>
+
+        <div style="background: #0a0a0a; padding: 40px 0;">
+            <button class="back-home-btn" onclick="showSection('home')">← Back to Home</button>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer style="background: #000; border-top: 1px solid rgba(255,44,44,0.2); padding: 50px 40px 28px;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+
+            <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; margin-bottom: 40px;">
+
+                <div style="flex: 1; min-width: 200px;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                        <img src="https://res.cloudinary.com/dztcdyco0/image/upload/v1778556520/campus_crawings_logo_lcefr8.jpg" height="36" width="36" style="border-radius: 6px;">
+                        <span style="font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #ff2c2c; letter-spacing: 2px;">Campus Crawiiings</span>
                     </div>
-                </div>`;
-                if (item.available) {
-                    select.innerHTML += `<option value="${item.id}">${item.name} — ₹${item.price}</option>`;
+                    <p style="color: #555; font-size: 13.5px; line-height: 1.8; font-family: 'DM Sans', sans-serif; max-width: 240px;">
+                        Smart digital solutions for modern campuses. Order food before you even leave your seat.
+                    </p>
+                </div>
+
+                <div style="flex: 1; min-width: 140px;">
+                    <p style="font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 3px; color: #ff2c2c; margin-bottom: 14px;">Quick Links</p>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 10px;"><a href="#" onclick="showSection('home'); return false;" style="color: #666; font-size: 14px; text-decoration: none; font-family: 'DM Sans', sans-serif;" onmouseover="this.style.color='#ff2c2c'" onmouseout="this.style.color='#666'">Home</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" onclick="showSection('about'); return false;" style="color: #666; font-size: 14px; text-decoration: none; font-family: 'DM Sans', sans-serif;" onmouseover="this.style.color='#ff2c2c'" onmouseout="this.style.color='#666'">About Us</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" onclick="showSection('services'); return false;" style="color: #666; font-size: 14px; text-decoration: none; font-family: 'DM Sans', sans-serif;" onmouseover="this.style.color='#ff2c2c'" onmouseout="this.style.color='#666'">Our Service</a></li>
+                        <li><a href="#" onclick="scrollToContact(); return false;" style="color: #666; font-size: 14px; text-decoration: none; font-family: 'DM Sans', sans-serif;" onmouseover="this.style.color='#ff2c2c'" onmouseout="this.style.color='#666'">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div style="flex: 1; min-width: 160px;">
+                    <p style="font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 3px; color: #ff2c2c; margin-bottom: 14px;">Reach Us</p>
+                    <div style="display: flex; gap: 14px; align-items: center;">
+                        <a href="https://www.instagram.com/campus_crawiiings/?hl=en" target="_blank" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:#111;border:2px solid #ff2c2c;box-shadow:0 0 10px rgba(255,44,44,0.2);transition:0.3s;" onmouseover="this.style.background='#ff2c2c'" onmouseout="this.style.background='#111'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ff2c2c" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=campuscrawiiings@gmail.com" target="_blank" style="display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:#111;border:2px solid #ff2c2c;box-shadow:0 0 10px rgba(255,44,44,0.2);transition:0.3s;" onmouseover="this.style.background='#ff2c2c'" onmouseout="this.style.background='#111'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ff2c2c" viewBox="0 0 24 24">
+                                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="height: 1px; background: linear-gradient(90deg, transparent, #ff2c2c, transparent); margin-bottom: 22px;"></div>
+
+            <p style="margin: 0; color: #444; font-family: 'DM Sans', sans-serif; font-size: 13px; letter-spacing: 1px; text-align: center;">
+                &copy; 2026 <span style="color: #ff2c2c; font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 2px;">Campus Crawiiings</span>. All rights reserved. Built with ❤️ for students.
+            </p>
+
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loading-screen');
+                loader.classList.add('hide');
+                setTimeout(() => loader.style.display = 'none', 600);
+            }, 2000);
+        });
+
+        function collapseNav() {
+            try {
+                const navCollapse = document.getElementById('navbarNav');
+                if (navCollapse && navCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navCollapse) || new bootstrap.Collapse(navCollapse, {
+                        toggle: false
+                    });
+                    bsCollapse.hide();
+                }
+            } catch (e) {}
+        }
+
+        function scrollToContact() {
+            const home = document.getElementById('home');
+            if (home.style.display === 'none' || home.style.display === '') {
+                showSection('home');
+                setTimeout(() => {
+                    document.getElementById('contact-section').scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }, 500);
+            } else {
+                document.getElementById('contact-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }
+            collapseNav();
+        }
+
+        function showSection(section) {
+            const home = document.getElementById('home');
+            const about = document.getElementById('about');
+            const services = document.getElementById('services');
+            const navHome = document.getElementById('nav-home');
+            const navAbout = document.getElementById('nav-about');
+            const navServices = document.getElementById('nav-services');
+
+            [navHome, navAbout, navServices].forEach(n => n.classList.remove('active-link'));
+
+            // Fade out current visible sections
+            [home, about, services].forEach(el => {
+                if (el.style.display !== 'none') {
+                    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
                 }
             });
-        } catch(error) {
-            document.getElementById('menu-container').innerHTML = '<p style="color:red;text-align:center;">Failed to load menu.</p>';
+
+            setTimeout(() => {
+                home.style.display = 'none';
+                about.style.display = 'none';
+                services.style.display = 'none';
+
+                let target, navTarget, hash, displayType;
+
+                if (section === 'about') {
+                    target = about;
+                    navTarget = navAbout;
+                    hash = '#about';
+                    displayType = 'block';
+                } else if (section === 'services') {
+                    target = services;
+                    navTarget = navServices;
+                    hash = '#services';
+                    displayType = 'block';
+                } else {
+                    target = home;
+                    navTarget = navHome;
+                    hash = '#home';
+                    displayType = 'flex';
+                }
+
+                try {
+                    history.pushState({
+                        page: section
+                    }, '', hash);
+                } catch (e) {}
+                target.style.display = displayType;
+                target.style.opacity = '0';
+                target.style.transform = 'translateY(30px)';
+                navTarget.classList.add('active-link');
+
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        target.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                        target.style.opacity = '1';
+                        target.style.transform = 'translateY(0)';
+                    });
+                });
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }, 380);
+
+            collapseNav();
         }
-    }
 
-    async function placeOrder() {
-        const name = document.getElementById('customer-name').value.trim();
-        const phone = document.getElementById('customer-phone').value.trim();
-        const itemId = document.getElementById('order-item').value;
-        const qty = document.getElementById('order-qty').value;
+        window.addEventListener('popstate', function() {
+            if (window.location.hash === '#about') showSection('about');
+            else if (window.location.hash === '#services') showSection('services');
+            else showSection('home');
+        });
 
-        if (!name || !phone || !itemId || !qty) {
-            alert('Please fill all fields!');
-            return;
-        }
-
-        const selectedItem = menuItems.find(i => i.id == itemId);
-
-        try {
-            const response = await fetch(`${SUPABASE_URL}/rest/v1/orders`, {
-                method: 'POST',
-                headers: {
-                    'apikey': SUPABASE_KEY,
-                    'Authorization': `Bearer ${SUPABASE_KEY}`,
-                    'Content-Type': 'application/json',
-                    'Prefer': 'return=minimal'
-                },
-                body: JSON.stringify({
-                    customer_name: name,
-                    customer_phone: phone,
-                    item_name: selectedItem.name,
-                    quantity: parseInt(qty),
-                    total_price: selectedItem.price * parseInt(qty)
-                })
-            });
-
-            if (response.ok) {
-                document.getElementById('success-msg').style.display = 'block';
-                document.getElementById('error-msg').style.display = 'none';
-                document.getElementById('customer-name').value = '';
-                document.getElementById('customer-phone').value = '';
-                document.getElementById('order-item').value = '';
-                document.getElementById('order-qty').value = '1';
-            } else {
-                document.getElementById('error-msg').style.display = 'block';
-            }
-        } catch(error) {
-            document.getElementById('error-msg').style.display = 'block';
-        }
-    }
-
-    loadMenu();
-</script>
+        // Init state
+        document.getElementById('about').style.display = 'none';
+        document.getElementById('services').style.display = 'none';
+        document.getElementById('home').style.display = 'flex';
+        document.getElementById('home').style.opacity = '1';
+        document.getElementById('home').style.transform = 'none';
+    </script>
 </body>
+
 </html>
