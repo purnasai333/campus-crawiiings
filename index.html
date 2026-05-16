@@ -1141,7 +1141,7 @@
     </div>
  
     <!-- FOOTER -->
-    <footer style="background: #000; border-top: 1px solid rgba(255,44,44,0.2); padding: 50px 40px 28px;">
+    <footer id="site-footer" style="background: #000; border-top: 1px solid rgba(255,44,44,0.2); padding: 50px 40px 28px;">
         <div style="max-width: 1100px; margin: 0 auto;">
  
             <div style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; margin-bottom: 40px;">
@@ -1231,6 +1231,7 @@
             const home = document.getElementById('home');
             const about = document.getElementById('about');
             const services = document.getElementById('services');
+            const footer = document.getElementById('site-footer');
             const navHome = document.getElementById('nav-home');
             const navAbout = document.getElementById('nav-about');
             const navServices = document.getElementById('nav-services');
@@ -1278,6 +1279,11 @@
                 target.style.transform = 'translateY(30px)';
                 navTarget.classList.add('active-link');
  
+                // Show footer only on home page
+                if (footer) {
+                    footer.style.display = section === 'home' ? 'block' : 'none';
+                }
+ 
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
                         target.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
@@ -1304,6 +1310,7 @@
         document.getElementById('home').style.display = 'flex';
         document.getElementById('home').style.opacity = '1';
         document.getElementById('home').style.transform = 'none';
+        document.getElementById('site-footer').style.display = 'block';
     </script>
 </body>
  
