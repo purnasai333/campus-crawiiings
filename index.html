@@ -71,10 +71,14 @@
         }
 
         /* Only apply tall centering on desktop */
-        @media (min-width: 769px) {
+        @media (max-width: 768px) {
+
             #home {
-                min-height: calc(90vh - 56px);
+                min-height: 100vh;
+                justify-content: center;
+                padding: 20px 24px;
             }
+
         }
 
         #home img {
