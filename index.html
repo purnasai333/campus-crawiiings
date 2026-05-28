@@ -1206,7 +1206,7 @@ Request-rate: 30/1m
             right: 0;
             bottom: 0;
             background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(50px);
             z-index: -1;
         }
 
@@ -1227,6 +1227,7 @@ Request-rate: 30/1m
             0% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1;
             }
@@ -1291,8 +1292,15 @@ Request-rate: 30/1m
         }
 
         @keyframes instagramIconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
         }
 
         .instagram-popup-title {
@@ -1379,8 +1387,17 @@ Request-rate: 30/1m
         }
 
         @keyframes arrowBounceDown {
-            0%, 100% { transform: translateY(0); opacity: 0.4; }
-            50% { transform: translateY(4px); opacity: 1; }
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translateY(4px);
+                opacity: 1;
+            }
         }
 
         .instagram-popup-cta {
@@ -1949,15 +1966,18 @@ Request-rate: 30/1m
             }
 
             @keyframes iconFloat {
-                0%, 100% {
+
+                0%,
+                100% {
                     transform: translateY(0);
                 }
+
                 50% {
                     transform: translateY(-4px);
                 }
             }
         }
-        
+
         .why-title {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 16px;
@@ -3042,6 +3062,7 @@ Request-rate: 30/1m
             }
 
             @media (max-width: 600px) {
+
                 /* Instagram Popup - Mobile */
                 .instagram-popup {
                     bottom: 16px;
@@ -3140,6 +3161,7 @@ Request-rate: 30/1m
                     opacity: 0;
                     transform: translateY(8px);
                 }
+
                 100% {
                     opacity: 1;
                     transform: translateY(0);
@@ -3152,10 +3174,10 @@ Request-rate: 30/1m
                 border-radius: 50%;
                 border: 2px solid rgba(255, 255, 255, .25);
                 background: rgba(255, 255, 255, .12);
-                transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), 
-                            background .35s cubic-bezier(.34, 1.56, .64, 1), 
-                            box-shadow .35s ease,
-                            border-color .35s ease;
+                transition: transform .35s cubic-bezier(.34, 1.56, .64, 1),
+                    background .35s cubic-bezier(.34, 1.56, .64, 1),
+                    box-shadow .35s ease,
+                    border-color .35s ease;
                 cursor: pointer;
                 padding: 0;
                 will-change: transform, box-shadow;
@@ -3186,10 +3208,10 @@ Request-rate: 30/1m
                 opacity: 1 !important;
                 transform: translateY(0) scale(0.92) !important;
                 animation: cardCarouselEnter .6s cubic-bezier(.34, 1.56, .64, 1) forwards !important;
-                transition: transform .45s cubic-bezier(.34, 1.56, .64, 1), 
-                            box-shadow .4s ease, 
-                            border-color .4s ease,
-                            filter .4s ease;
+                transition: transform .45s cubic-bezier(.34, 1.56, .64, 1),
+                    box-shadow .4s ease,
+                    border-color .4s ease,
+                    filter .4s ease;
                 will-change: transform, filter;
                 position: relative;
                 overflow: hidden;
@@ -3200,6 +3222,7 @@ Request-rate: 30/1m
                     opacity: 0;
                     transform: translateX(40px) scale(0.85);
                 }
+
                 100% {
                     opacity: 1;
                     transform: translateY(0) scale(0.92);
@@ -3222,15 +3245,41 @@ Request-rate: 30/1m
             }
 
             /* Enhanced scroll-snap centering with scale effect */
-            .why-grid .why-card:nth-child(1) { animation-delay: 0ms; }
-            .why-grid .why-card:nth-child(2) { animation-delay: 80ms; }
-            .why-grid .why-card:nth-child(3) { animation-delay: 160ms; }
-            .why-grid .why-card:nth-child(4) { animation-delay: 240ms; }
-            .why-grid .why-card:nth-child(5) { animation-delay: 320ms; }
-            .why-grid .why-card:nth-child(6) { animation-delay: 400ms; }
-            .why-grid .why-card:nth-child(7) { animation-delay: 480ms; }
-            .why-grid .why-card:nth-child(8) { animation-delay: 560ms; }
-            .why-grid .why-card:nth-child(9) { animation-delay: 640ms; }
+            .why-grid .why-card:nth-child(1) {
+                animation-delay: 0ms;
+            }
+
+            .why-grid .why-card:nth-child(2) {
+                animation-delay: 80ms;
+            }
+
+            .why-grid .why-card:nth-child(3) {
+                animation-delay: 160ms;
+            }
+
+            .why-grid .why-card:nth-child(4) {
+                animation-delay: 240ms;
+            }
+
+            .why-grid .why-card:nth-child(5) {
+                animation-delay: 320ms;
+            }
+
+            .why-grid .why-card:nth-child(6) {
+                animation-delay: 400ms;
+            }
+
+            .why-grid .why-card:nth-child(7) {
+                animation-delay: 480ms;
+            }
+
+            .why-grid .why-card:nth-child(8) {
+                animation-delay: 560ms;
+            }
+
+            .why-grid .why-card:nth-child(9) {
+                animation-delay: 640ms;
+            }
 
             /* Center-focused scale effect for active/visible cards */
             .why-card:hover {
@@ -3272,6 +3321,7 @@ Request-rate: 30/1m
                     opacity: 0;
                     transform: translateY(20px);
                 }
+
                 100% {
                     opacity: 1;
                     transform: translateY(0);
@@ -3286,10 +3336,13 @@ Request-rate: 30/1m
             }
 
             @keyframes arrowBounce {
-                0%, 100% {
+
+                0%,
+                100% {
                     transform: translateX(0);
                     opacity: 1;
                 }
+
                 50% {
                     transform: translateX(6px);
                     opacity: 0.6;
@@ -4943,7 +4996,7 @@ Request-rate: 30/1m
                     // ── ELITE MOMENTUM & VELOCITY TRACKING ──
                     const onPointerDown = (e) => {
                         isDragging = true;
-                        lastPointerX = e.clientX || e.touches?.[0].clientX || 0;
+                        lastPointerX = e.clientX || e.touches?. [0].clientX || 0;
                         lastTimestamp = Date.now();
                         if (momentumRaf) cancelAnimationFrame(momentumRaf);
                     };
@@ -5011,10 +5064,18 @@ Request-rate: 30/1m
                         }
                     };
 
-                    Utils.on(grid, 'pointerdown', onPointerDown, { passive: true });
-                    Utils.on(grid, 'pointermove', onPointerMove, { passive: true });
-                    Utils.on(grid, 'pointerup', onPointerUp, { passive: true });
-                    Utils.on(grid, 'pointercancel', onPointerUp, { passive: true });
+                    Utils.on(grid, 'pointerdown', onPointerDown, {
+                        passive: true
+                    });
+                    Utils.on(grid, 'pointermove', onPointerMove, {
+                        passive: true
+                    });
+                    Utils.on(grid, 'pointerup', onPointerUp, {
+                        passive: true
+                    });
+                    Utils.on(grid, 'pointercancel', onPointerUp, {
+                        passive: true
+                    });
 
                     Utils.on(grid, 'scroll', () => {
                         const now = Date.now();
@@ -5023,7 +5084,7 @@ Request-rate: 30/1m
                             const deltaTime = Math.max(1, now - lastTimestamp);
                             scrollVelocity = deltaScroll / deltaTime;
                         }
-                        
+
                         lastScrollLeft = grid.scrollLeft;
                         lastTimestamp = now;
 
@@ -5044,33 +5105,33 @@ Request-rate: 30/1m
                         const items = allItems();
                         const gridCenter = grid.scrollLeft + grid.clientWidth / 2;
                         const scrollVelocityFactor = Math.min(Math.abs(scrollVelocity) * 20, 1);
-                        
+
                         items.forEach((card, idx) => {
                             if (card.classList.contains('carousel-clone')) return;
-                            
+
                             const cardCenter = card.offsetLeft + card.offsetWidth / 2;
                             const distanceFromCenter = gridCenter - cardCenter;
                             const normalizedDistance = Math.min(Math.abs(distanceFromCenter) / (grid.clientWidth * 0.5), 1);
-                            
+
                             // Enhanced easing with multiple curves for sophistication
                             const easeProgress = normalizedDistance * normalizedDistance;
-                            
+
                             // Sophisticated scale with velocity influence
                             const baseScale = 1 - (easeProgress * 0.08);
                             const velocityScale = 1 + scrollVelocityFactor * 0.04;
                             const scale = baseScale * velocityScale;
-                            
+
                             // Opacity with smooth falloff
                             const opacity = 1 - (easeProgress * 0.35);
-                            
+
                             // Brightness and saturation for depth
                             const brightness = 1 - (easeProgress * 0.2);
                             const saturate = 1 + (1 - normalizedDistance) * 0.15;
-                            
+
                             // 3D Parallax: cards lean toward or away based on position
                             const perspectiveDepth = distanceFromCenter * 0.15;
                             const rotateY = Math.max(-8, Math.min(8, perspectiveDepth));
-                            
+
                             // Apply transforms with GPU optimization
                             card.style.transform = `scale(${scale}) perspective(1200px) rotateY(${rotateY}deg) translateZ(0)`;
                             card.style.opacity = String(opacity);
@@ -5116,7 +5177,9 @@ Request-rate: 30/1m
                         // Hover haptic feedback for dots
                         dot.addEventListener('pointerenter', () => {
                             hapticFeedback('light');
-                        }, { passive: true });
+                        }, {
+                            passive: true
+                        });
                     });
 
                     // ── CARD CLICK HAPTIC & SCALE FEEDBACK ──
@@ -5125,12 +5188,16 @@ Request-rate: 30/1m
                             hapticFeedback('snap');
                             card.style.transition = 'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1)';
                             card.style.transform = `${card.style.transform} scale(0.95)`;
-                        }, { passive: true });
+                        }, {
+                            passive: true
+                        });
 
                         Utils.on(card, 'pointerup', () => {
                             card.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
                             applyScrollAnimations();
-                        }, { passive: true });
+                        }, {
+                            passive: true
+                        });
                     });
 
                     // ── ADD CSS FOR DOT PULSE ANIMATION ──
@@ -5477,11 +5544,15 @@ Request-rate: 30/1m
                             }
 
                             // Create blob from embedded code
-                            const swBlob = new Blob([swScript.textContent], { type: 'application/javascript' });
+                            const swBlob = new Blob([swScript.textContent], {
+                                type: 'application/javascript'
+                            });
                             const swUrl = URL.createObjectURL(swBlob);
 
                             // Register service worker from blob
-                            navigator.serviceWorker.register(swUrl, { scope: '/' })
+                            navigator.serviceWorker.register(swUrl, {
+                                    scope: '/'
+                                })
                                 .then(() => {
                                     Logger.log('pwa', 'Service Worker registered from embedded code');
                                 })
