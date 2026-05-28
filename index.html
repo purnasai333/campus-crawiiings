@@ -1179,6 +1179,244 @@ Request-rate: 30/1m
             z-index: 0;
         }
 
+        /* ╔════════════════════════════════════════════════════════════╗
+           ║  INSTAGRAM POPUP - GLASSMORPHISM UI                       ║
+           ╚════════════════════════════════════════════════════════════╝ */
+
+        .instagram-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 10000;
+            opacity: 0;
+            transform: translateY(400px);
+            animation: instagramPopupSlideUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation-delay: 0.3s;
+        }
+
+        .instagram-popup.hidden {
+            display: none !important;
+        }
+
+        /* Hide by default until Instagram is detected */
+        .instagram-popup:not(.visible) {
+            display: none;
+        }
+
+        .instagram-popup.visible {
+            display: block;
+        }
+
+        @keyframes instagramPopupSlideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(400px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .instagram-popup-content {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 28px 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Gradient background enhancement */
+        .instagram-popup-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 44, 44, 0.05) 0%, rgba(200, 44, 100, 0.02) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .instagram-popup-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: #fff;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 2;
+            padding: 0;
+        }
+
+        .instagram-popup-close:hover {
+            background: rgba(255, 44, 44, 0.3);
+            transform: rotate(90deg) scale(1.1);
+        }
+
+        .instagram-popup-close:active {
+            transform: rotate(90deg) scale(0.95);
+        }
+
+        .instagram-popup-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            animation: instagramIconBounce 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+        }
+
+        @keyframes instagramIconBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .instagram-popup-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #fff;
+            margin: 0 0 8px 0;
+            line-height: 1.3;
+        }
+
+        .instagram-popup-subtitle {
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ffb3b3;
+            margin: 0 0 18px 0;
+            line-height: 1.4;
+        }
+
+        .instagram-popup-instructions {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .instruction-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .instruction-step:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .instruction-number {
+            min-width: 24px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(255, 44, 44, 0.2);
+            border: 1px solid rgba(255, 44, 44, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: #ff8888;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .instruction-text {
+            font-family: 'Syne', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: #ccc;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .menu-icon {
+            display: inline-block;
+            background: rgba(255, 44, 44, 0.2);
+            border: 1px solid rgba(255, 44, 44, 0.4);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 700;
+            margin: 0 2px;
+        }
+
+        .instruction-arrow {
+            text-align: center;
+            color: rgba(255, 44, 44, 0.4);
+            font-size: 16px;
+            margin: 4px 0;
+            animation: arrowBounceDown 2s ease-in-out infinite;
+        }
+
+        @keyframes arrowBounceDown {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translateY(4px);
+                opacity: 1;
+            }
+        }
+
+        .instagram-popup-cta {
+            display: block;
+            width: 100%;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #ff2c2c 0%, #ff4444 100%);
+            border: none;
+            border-radius: 12px;
+            font-family: 'Syne', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-transform: uppercase;
+            box-shadow: 0 8px 16px rgba(255, 44, 44, 0.3);
+        }
+
+        .instagram-popup-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(255, 44, 44, 0.4);
+        }
+
+        .instagram-popup-cta:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 8px rgba(255, 44, 44, 0.3);
+        }
+
         .hero-content {
             position: relative;
             z-index: 2;
@@ -1605,6 +1843,15 @@ Request-rate: 30/1m
             bottom: 20%;
             width: 2px;
             background: linear-gradient(180deg, transparent, var(--red), transparent);
+        }
+
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--red);
+            text-transform: uppercase;
+            margin-bottom: 12px;
         }
 
         .section-h {
@@ -2760,6 +3007,7 @@ Request-rate: 30/1m
             .why-grid {
                 display: flex !important;
                 overflow-x: scroll;
+                overflow-y: visible;
                 overscroll-behavior-x: contain;
                 scroll-snap-type: x mandatory;
                 scroll-behavior: smooth;
@@ -2772,6 +3020,7 @@ Request-rate: 30/1m
                 border-radius: 0;
                 margin-top: 32px;
                 padding-bottom: 16px;
+                padding-top: 12px;
                 /* hide scrollbar */
                 scrollbar-width: none;
                 perspective: 1000px;
@@ -2800,8 +3049,85 @@ Request-rate: 30/1m
             }
 
             @media (max-width: 600px) {
+
+                /* Instagram Popup - Mobile */
+                .instagram-popup {
+                    bottom: 16px;
+                    left: 16px;
+                    right: 16px;
+                }
+
+                .instagram-popup-content {
+                    padding: 24px 18px;
+                    border-radius: 16px;
+                }
+
+                .instagram-popup-title {
+                    font-size: 16px;
+                    margin-bottom: 6px;
+                }
+
+                .instagram-popup-subtitle {
+                    font-size: 13px;
+                    margin-bottom: 16px;
+                }
+
+                .instagram-popup-icon {
+                    font-size: 32px;
+                    margin-bottom: 10px;
+                }
+
+                .instagram-popup-instructions {
+                    padding: 12px;
+                    margin-bottom: 16px;
+                }
+
+                .instruction-number {
+                    min-width: 22px;
+                    width: 22px;
+                    height: 22px;
+                    font-size: 11px;
+                }
+
+                .instruction-text {
+                    font-size: 11px;
+                }
+
+                .instagram-popup-cta {
+                    padding: 12px 16px;
+                    font-size: 12px;
+                    letter-spacing: 0.5px;
+                }
+
                 .why-grid::after {
                     display: block;
+                }
+            }
+
+            /* Tablet & Desktop responsive styles */
+            @media (min-width: 601px) {
+                .instagram-popup {
+                    bottom: 32px;
+                    left: auto;
+                    right: 32px;
+                    max-width: 380px;
+                }
+
+                .instagram-popup-content {
+                    padding: 32px 24px;
+                    border-radius: 24px;
+                }
+
+                .instagram-popup-title {
+                    font-size: 19px;
+                }
+
+                .instagram-popup-subtitle {
+                    font-size: 15px;
+                }
+
+                .instagram-popup-instructions {
+                    padding: 16px;
                 }
             }
 
@@ -3311,6 +3637,49 @@ Request-rate: 30/1m
         <a href="#" data-action="contact" role="menuitem"><span class="drawer-dot"></span>Get In Touch</a>
     </div>
 
+    <!-- ╔════════════════════════════════════════════════════════════╗
+         ║  INSTAGRAM IN-APP BROWSER DETECTION POPUP                ║
+         ║  Modern Glassmorphism UI with Premium Design              ║
+         ╚════════════════════════════════════════════════════════════╝ -->
+    <div id="instagram-popup" class="instagram-popup" role="dialog" aria-labelledby="instagram-popup-title">
+        <div class="instagram-popup-content">
+            <!-- Close Button -->
+            <button id="instagram-popup-close" class="instagram-popup-close" aria-label="Close popup" title="Close">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="4" y1="4" x2="16" y2="16"></line>
+                    <line x1="16" y1="4" x2="4" y2="16"></line>
+                </svg>
+            </button>
+
+            <!-- Rocket Icon -->
+            <div class="instagram-popup-icon">🚀</div>
+
+            <!-- Main Title -->
+            <h2 id="instagram-popup-title" class="instagram-popup-title">For the best experience</h2>
+
+            <!-- Subtitle -->
+            <p class="instagram-popup-subtitle">Open this site in your browser</p>
+
+            <!-- Instructions -->
+            <div class="instagram-popup-instructions">
+                <div class="instruction-step">
+                    <div class="instruction-number">1</div>
+                    <p class="instruction-text">Tap <span class="menu-icon">⋮</span> in the top-right corner</p>
+                </div>
+                <div class="instruction-arrow">↓</div>
+                <div class="instruction-step">
+                    <div class="instruction-number">2</div>
+                    <p class="instruction-text">Select "Open in Browser"</p>
+                </div>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="#" id="instagram-popup-cta" class="instagram-popup-cta" target="_blank" rel="noopener">
+                Learn More
+            </a>
+        </div>
+    </div>
+
     <!-- IMPROVEMENT 2: BOTTOM NAV BAR (5 items, JioHotstar style) -->
     <nav class="bottom-nav" aria-label="Bottom navigation">
         <div class="bottom-nav-inner" id="bn-inner">
@@ -3657,6 +4026,7 @@ Request-rate: 30/1m
     <!-- ========== CLIENTS ========== -->
     <div id="pg-clients" class="page" role="main" aria-label="Clients page">
         <div style="padding:110px 64px;position:relative;overflow:hidden;width:100%;box-sizing:border-box;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60vh;">
+            <p class="section-label">Coming Soon</p>
             <h2 class="section-h">Our <span class="r">Clients</span></h2>
             <p style="font-size:16px;color:#666;max-width:520px;margin:32px 0 48px;line-height:1.8;">We're showcasing the amazing canteens already transforming their operations with Campus Crawiiings. Check back soon to see who's part of our growing network!</p>
             <a class="btn-red" href="#" data-action="mailto" data-user="campuscrawiiings" data-domain="gmail.com" data-subject="Become a Campus Crawiiings Client">Become a Client</a>
@@ -4833,6 +5203,108 @@ Request-rate: 30/1m
                 }
             };
 
+            // ╔════════════════════════════════════════════════════════════╗
+            // ║  INSTAGRAM IN-APP BROWSER DETECTION & POPUP HANDLER       ║
+            // ╚════════════════════════════════════════════════════════════╝
+            const InstagramDetector = {
+                // List of in-app browsers to detect
+                inAppBrowsers: [
+                    /Instagram/i,
+                    /FBAN|FBAV/i, // Facebook app
+                    /Line/i,
+                    /WhatsApp/i,
+                    /Telegram/i,
+                    /Messenger/i,
+                    /TikTok/i,
+                    /Snapchat/i
+                ],
+
+                isInAppBrowser() {
+                    const userAgent = navigator.userAgent;
+                    return this.inAppBrowsers.some(pattern => pattern.test(userAgent));
+                },
+
+                isInstagramApp() {
+                    return /Instagram/.test(navigator.userAgent);
+                },
+
+                init() {
+                    // Only show popup for Instagram app browser
+                    if (!this.isInstagramApp()) return;
+
+                    // Check if user has dismissed the popup before
+                    const dismissed = localStorage.getItem('instagramPopupDismissed');
+                    if (dismissed) return;
+
+                    // Show popup after slight delay for smooth UX
+                    setTimeout(() => {
+                        this.showPopup();
+                    }, 800);
+                },
+
+                showPopup() {
+                    const popup = Utils.query('#instagram-popup');
+                    if (!popup) return;
+
+                    // Add visible class to show popup
+                    popup.classList.add('visible');
+
+                    // Setup close button
+                    const closeBtn = Utils.query('#instagram-popup-close');
+                    if (closeBtn) {
+                        Utils.on(closeBtn, 'click', () => this.closePopup());
+                    }
+
+                    // Setup CTA button
+                    const ctaBtn = Utils.query('#instagram-popup-cta');
+                    if (ctaBtn) {
+                        Utils.on(ctaBtn, 'click', () => this.closePopup());
+                    }
+
+                    // Haptic feedback
+                    Utils.haptic(12);
+                },
+
+                closePopup() {
+                    const popup = Utils.query('#instagram-popup');
+                    if (!popup) return;
+
+                    // Add fade-out animation
+                    popup.style.animation = 'instagramPopupFadeOut 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
+
+                    // Remove after animation
+                    setTimeout(() => {
+                        popup.classList.remove('visible');
+                        popup.classList.add('hidden');
+                    }, 400);
+
+                    // Save dismissal in localStorage (persists for 30 days)
+                    const expiryDate = new Date();
+                    expiryDate.setDate(expiryDate.getDate() + 30);
+                    localStorage.setItem('instagramPopupDismissed', 'true');
+                    localStorage.setItem('instagramPopupExpiry', expiryDate.getTime());
+                }
+            };
+
+            // Add fade-out animation
+            if (!document.getElementById('instagram-popup-animations')) {
+                const style = document.createElement('style');
+                style.id = 'instagram-popup-animations';
+                style.textContent = `
+                    @keyframes instagramPopupFadeOut {
+                        0% {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                        100% {
+                            opacity: 0;
+                            transform: translateY(400px);
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+
             // ─── SCROLL & EFFECTS ───
             const Effects = {
                 initScroll() {
@@ -5050,9 +5522,33 @@ Request-rate: 30/1m
                     if (!('serviceWorker' in navigator)) return;
 
                     Utils.on(window, 'load', Utils.safe(() => {
-                        navigator.serviceWorker.register('./sw.js')
-                            .then(() => Logger.log('pwa', 'Service Worker registered'))
-                            .catch(e => Logger.warn('pwa', 'SW registration failed', e));
+                        try {
+                            // Get embedded service worker code
+                            const swScript = Utils.query('#service-worker-code');
+                            if (!swScript || !swScript.textContent) {
+                                Logger.warn('pwa', 'Service worker code not found');
+                                return;
+                            }
+
+                            // Create blob from embedded code
+                            const swBlob = new Blob([swScript.textContent], {
+                                type: 'application/javascript'
+                            });
+                            const swUrl = URL.createObjectURL(swBlob);
+
+                            // Register service worker from blob
+                            navigator.serviceWorker.register(swUrl, {
+                                    scope: '/'
+                                })
+                                .then(() => {
+                                    Logger.log('pwa', 'Service Worker registered from embedded code');
+                                })
+                                .catch(e => {
+                                    Logger.warn('pwa', 'SW registration failed', e);
+                                });
+                        } catch (e) {
+                            Logger.error('registerServiceWorker', e);
+                        }
                     }, 'registerSW'));
                 }
             };
@@ -5089,6 +5585,7 @@ Request-rate: 30/1m
                     Carousel.init();
                     Effects.initSwipe();
                     CursorFX.init();
+                    InstagramDetector.init();
 
                     // Setup keyboard nav
                     Utils.on(document, 'keydown', Utils.safe((e) => {
