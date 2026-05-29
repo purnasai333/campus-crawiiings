@@ -1179,240 +1179,6 @@ Request-rate: 30/1m
             z-index: 0;
         }
 
-        /* ╔════════════════════════════════════════════════════════════╗
-           ║  INSTAGRAM POPUP - GLASSMORPHISM UI                       ║
-           ╚════════════════════════════════════════════════════════════╝ */
-
-        .instagram-popup {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            top: 0;
-            z-index: 10000;
-            opacity: 0;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            animation: instagramPopupFadeIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            animation-delay: 0.3s;
-        }
-
-        .instagram-popup::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(5px);
-            z-index: -1;
-        }
-
-        .instagram-popup.hidden {
-            display: none !important;
-        }
-
-        /* Hide by default until Instagram is detected */
-        .instagram-popup:not(.visible) {
-            display: none;
-        }
-
-        .instagram-popup.visible {
-            display: block;
-        }
-
-        @keyframes instagramPopupFadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .instagram-popup-content {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
-            padding: 28px 20px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Gradient background enhancement */
-        .instagram-popup-content::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255, 44, 44, 0.05) 0%, rgba(200, 44, 100, 0.02) 100%);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .instagram-popup-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #fff;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 2;
-            padding: 0;
-        }
-
-        .instagram-popup-close:hover {
-            background: rgba(255, 44, 44, 0.3);
-            transform: rotate(90deg) scale(1.1);
-        }
-
-        .instagram-popup-close:active {
-            transform: rotate(90deg) scale(0.95);
-        }
-
-        .instagram-popup-icon {
-            font-size: 36px;
-            margin-bottom: 12px;
-            animation: instagramIconBounce 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
-        }
-
-        @keyframes instagramIconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .instagram-popup-title {
-            font-family: 'Syne', sans-serif;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            color: #fff;
-            margin: 0 0 8px 0;
-            line-height: 1.3;
-        }
-
-        .instagram-popup-subtitle {
-            font-family: 'Syne', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            color: #ffb3b3;
-            margin: 0 0 18px 0;
-            line-height: 1.4;
-        }
-
-        .instagram-popup-instructions {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 14px;
-            padding: 14px;
-            margin-bottom: 18px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .instruction-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 10px;
-        }
-
-        .instruction-step:last-of-type {
-            margin-bottom: 0;
-        }
-
-        .instruction-number {
-            min-width: 24px;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: rgba(255, 44, 44, 0.2);
-            border: 1px solid rgba(255, 44, 44, 0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 700;
-            color: #ff8888;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .instruction-text {
-            font-family: 'Syne', sans-serif;
-            font-size: 12px;
-            font-weight: 500;
-            color: #ccc;
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        .menu-icon {
-            display: inline-block;
-            background: rgba(255, 44, 44, 0.2);
-            border: 1px solid rgba(255, 44, 44, 0.4);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 700;
-            margin: 0 2px;
-        }
-
-        .instruction-arrow {
-            text-align: center;
-            color: rgba(255, 44, 44, 0.4);
-            font-size: 16px;
-            margin: 4px 0;
-            animation: arrowBounceDown 2s ease-in-out infinite;
-        }
-
-        @keyframes arrowBounceDown {
-            0%, 100% { transform: translateY(0); opacity: 0.4; }
-            50% { transform: translateY(4px); opacity: 1; }
-        }
-
-        .instagram-popup-cta {
-            display: block;
-            width: 100%;
-            padding: 14px 20px;
-            background: linear-gradient(135deg, #ff2c2c 0%, #ff4444 100%);
-            border: none;
-            border-radius: 12px;
-            font-family: 'Syne', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.8px;
-            color: #fff;
-            text-decoration: none;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            text-transform: uppercase;
-            box-shadow: 0 8px 16px rgba(255, 44, 44, 0.3);
-        }
-
-        .instagram-popup-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(255, 44, 44, 0.4);
-        }
-
-        .instagram-popup-cta:active {
-            transform: translateY(0);
-            box-shadow: 0 4px 8px rgba(255, 44, 44, 0.3);
-        }
-
         .hero-content {
             position: relative;
             z-index: 2;
@@ -1868,12 +1634,12 @@ Request-rate: 30/1m
         .why-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            gap: 1px;
             margin-top: 56px;
-            background: transparent;
-            border: none;
-            border-radius: 0;
-            overflow: visible;
+            background: rgba(255, 44, 44, .1);
+            border: 1px solid rgba(255, 44, 44, .1);
+            border-radius: 16px;
+            overflow: hidden;
             position: relative;
         }
 
@@ -1882,11 +1648,9 @@ Request-rate: 30/1m
             padding: 32px 26px;
             position: relative;
             overflow: hidden;
-            transition: background .35s, border-color .35s, transform .35s;
+            transition: background .35s;
             opacity: 0;
             transform: translateY(24px);
-            border: 1.5px solid rgba(255, 44, 44, .28);
-            border-radius: 12px;
         }
 
         .why-card.card-visible {
@@ -1910,7 +1674,6 @@ Request-rate: 30/1m
             background: linear-gradient(90deg, transparent, var(--red), transparent);
             transform: scaleX(0);
             transition: transform .4s ease;
-            display: none;
         }
 
         .why-card:hover::after {
@@ -1919,70 +1682,38 @@ Request-rate: 30/1m
 
         .why-card:hover {
             background: #2a2a2a;
-            border-color: rgba(255, 44, 44, .45);
-            transform: translateY(-4px);
         }
 
         .why-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 8px;
-            background: rgba(255, 44, 44, .12);
-            border: 1.5px solid rgba(255, 44, 44, .35);
+            width: 40px;
+            height: 40px;
+            border-radius: 9px;
+            background: rgba(255, 44, 44, .09);
+            border: 1px solid rgba(255, 44, 44, .22);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 18px;
-            transition: background .3s, border-color .3s, transform .4s cubic-bezier(.34, 1.56, .64, 1);
+            margin-bottom: 16px;
+            transition: background .3s;
         }
 
         .why-card:hover .why-icon {
-            background: rgba(255, 44, 44, .22);
-            border-color: rgba(255, 44, 44, .55);
-            transform: scale(1.12) rotate(6deg);
+            background: rgba(255, 44, 44, .16);
         }
 
-        /* Mobile elite: icon float animation */
-        @media (max-width: 900px) {
-            .why-card .why-icon {
-                animation: iconFloat 3s ease-in-out infinite;
-            }
-
-            @keyframes iconFloat {
-                0%, 100% {
-                    transform: translateY(0);
-                }
-                50% {
-                    transform: translateY(-4px);
-                }
-            }
-        }
-        
         .why-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 16px;
+            font-size: 19px;
             letter-spacing: 1px;
             color: #fff;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            font-weight: 700;
-            transition: color .3s ease;
-        }
-
-        .why-card:hover .why-title {
-            color: #ffcccc;
+            margin-bottom: 9px;
         }
 
         .why-text {
             font-size: 13px;
-            color: #8b8b8b;
+            color: #686868;
             line-height: 1.75;
             font-weight: 400;
-            transition: color .3s ease;
-        }
-
-        .why-card:hover .why-text {
-            color: #aaaaaa;
         }
 
         /* COUNTER */
@@ -3000,10 +2731,8 @@ Request-rate: 30/1m
             .why-grid {
                 display: flex !important;
                 overflow-x: scroll;
-                overflow-y: visible;
                 overscroll-behavior-x: contain;
                 scroll-snap-type: x mandatory;
-                scroll-behavior: smooth;
                 -webkit-overflow-scrolling: touch;
                 scroll-padding-left: 20px;
                 scroll-padding-right: 20px;
@@ -3013,114 +2742,12 @@ Request-rate: 30/1m
                 border-radius: 0;
                 margin-top: 32px;
                 padding-bottom: 16px;
-                padding-top: 12px;
                 /* hide scrollbar */
                 scrollbar-width: none;
-                perspective: 1000px;
-                /* Enable hardware acceleration */
-                transform: translateZ(0);
-                -webkit-transform: translateZ(0);
-                will-change: scroll-position;
             }
 
             .why-grid::-webkit-scrollbar {
                 display: none;
-            }
-
-            /* Add subtle gradient mask for premium look */
-            .why-grid::after {
-                content: '';
-                position: absolute;
-                right: 0;
-                top: 0;
-                height: 100%;
-                width: 40px;
-                background: linear-gradient(90deg, transparent 0%, rgba(28, 28, 28, 0.8) 100%);
-                pointer-events: none;
-                z-index: 2;
-                display: none;
-            }
-
-            @media (max-width: 600px) {
-                /* Instagram Popup - Mobile */
-                .instagram-popup {
-                    bottom: 16px;
-                    left: 16px;
-                    right: 16px;
-                }
-
-                .instagram-popup-content {
-                    padding: 24px 18px;
-                    border-radius: 16px;
-                }
-
-                .instagram-popup-title {
-                    font-size: 16px;
-                    margin-bottom: 6px;
-                }
-
-                .instagram-popup-subtitle {
-                    font-size: 13px;
-                    margin-bottom: 16px;
-                }
-
-                .instagram-popup-icon {
-                    font-size: 32px;
-                    margin-bottom: 10px;
-                }
-
-                .instagram-popup-instructions {
-                    padding: 12px;
-                    margin-bottom: 16px;
-                }
-
-                .instruction-number {
-                    min-width: 22px;
-                    width: 22px;
-                    height: 22px;
-                    font-size: 11px;
-                }
-
-                .instruction-text {
-                    font-size: 11px;
-                }
-
-                .instagram-popup-cta {
-                    padding: 12px 16px;
-                    font-size: 12px;
-                    letter-spacing: 0.5px;
-                }
-
-                .why-grid::after {
-                    display: block;
-                }
-            }
-
-            /* Tablet & Desktop responsive styles */
-            @media (min-width: 601px) {
-                .instagram-popup {
-                    bottom: 32px;
-                    left: auto;
-                    right: 32px;
-                    max-width: 380px;
-                }
-
-                .instagram-popup-content {
-                    padding: 32px 24px;
-                    border-radius: 24px;
-                }
-
-                .instagram-popup-title {
-                    font-size: 19px;
-                }
-
-                .instagram-popup-subtitle {
-                    font-size: 15px;
-                }
-
-                .instagram-popup-instructions {
-                    padding: 16px;
-                }
             }
 
             .carousel-dots {
@@ -3128,49 +2755,26 @@ Request-rate: 30/1m
                 justify-content: center;
                 gap: 8px;
                 margin: 14px 0 0;
-                animation: dotsEnter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
             }
 
             .carousel-dots.show {
                 display: flex;
             }
 
-            @keyframes dotsEnter {
-                0% {
-                    opacity: 0;
-                    transform: translateY(8px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-
             .carousel-dot {
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
-                border: 2px solid rgba(255, 255, 255, .25);
-                background: rgba(255, 255, 255, .12);
-                transition: transform .35s cubic-bezier(.34, 1.56, .64, 1), 
-                            background .35s cubic-bezier(.34, 1.56, .64, 1), 
-                            box-shadow .35s ease,
-                            border-color .35s ease;
+                border: none;
+                background: rgba(255, 255, 255, .25);
+                transition: transform .25s ease, background .25s ease;
                 cursor: pointer;
                 padding: 0;
-                will-change: transform, box-shadow;
-            }
-
-            .carousel-dot:hover {
-                background: rgba(255, 255, 255, .2);
-                border-color: rgba(255, 44, 44, .5);
             }
 
             .carousel-dot.active {
                 background: #ff2c2c;
-                border-color: #ff4444;
-                transform: scale(1.3);
-                box-shadow: 0 0 16px rgba(255, 44, 44, .8), 0 0 32px rgba(255, 44, 44, .4);
+                transform: scale(1.2);
             }
 
             .why-card {
@@ -3178,69 +2782,14 @@ Request-rate: 30/1m
                 max-width: 320px;
                 scroll-snap-align: center;
                 scroll-snap-stop: always;
-                border-radius: 12px;
-                border: 1.5px solid rgba(255, 44, 44, .28);
+                border-radius: 14px;
+                border: 1px solid rgba(255, 44, 44, .14);
                 margin-right: 12px;
                 background: var(--bg2);
                 /* override staggered opacity so all are visible */
                 opacity: 1 !important;
-                transform: translateY(0) scale(0.92) !important;
-                animation: cardCarouselEnter .6s cubic-bezier(.34, 1.56, .64, 1) forwards !important;
-                transition: transform .45s cubic-bezier(.34, 1.56, .64, 1), 
-                            box-shadow .4s ease, 
-                            border-color .4s ease,
-                            filter .4s ease;
-                will-change: transform, filter;
-                position: relative;
-                overflow: hidden;
-            }
-
-            @keyframes cardCarouselEnter {
-                0% {
-                    opacity: 0;
-                    transform: translateX(40px) scale(0.85);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0) scale(0.92);
-                }
-            }
-
-            /* Elite shine/gloss effect on card */
-            .why-card::before {
-                content: '';
-                position: absolute;
-                top: -50%;
-                left: -50%;
-                width: 200%;
-                height: 200%;
-                background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
-                opacity: 0;
-                transition: opacity 0.4s ease;
-                pointer-events: none;
-                z-index: 1;
-            }
-
-            /* Enhanced scroll-snap centering with scale effect */
-            .why-grid .why-card:nth-child(1) { animation-delay: 0ms; }
-            .why-grid .why-card:nth-child(2) { animation-delay: 80ms; }
-            .why-grid .why-card:nth-child(3) { animation-delay: 160ms; }
-            .why-grid .why-card:nth-child(4) { animation-delay: 240ms; }
-            .why-grid .why-card:nth-child(5) { animation-delay: 320ms; }
-            .why-grid .why-card:nth-child(6) { animation-delay: 400ms; }
-            .why-grid .why-card:nth-child(7) { animation-delay: 480ms; }
-            .why-grid .why-card:nth-child(8) { animation-delay: 560ms; }
-            .why-grid .why-card:nth-child(9) { animation-delay: 640ms; }
-
-            /* Center-focused scale effect for active/visible cards */
-            .why-card:hover {
-                transform: translateY(-8px) scale(1) !important;
-                border-color: rgba(255, 44, 44, .55) !important;
-                box-shadow: 0 16px 48px rgba(255, 44, 44, .25), 0 0 32px rgba(255, 44, 44, .15) !important;
-            }
-
-            .why-card:hover::before {
-                opacity: 1;
+                transform: none !important;
+                animation: none !important;
             }
 
             .why-card:first-child {
@@ -3255,45 +2804,16 @@ Request-rate: 30/1m
             .why-scroll-hint {
                 display: flex;
                 align-items: center;
-                justify-content: center;
                 gap: 8px;
                 margin-top: 14px;
                 font-family: 'Space Mono', monospace;
                 font-size: 9px;
-                letter-spacing: 3px;
+                letter-spacing: 2px;
                 color: #555;
-                animation: slideInUp .7s cubic-bezier(.34, 1.56, .64, 1) forwards;
-                text-transform: uppercase;
-                font-weight: 600;
-            }
-
-            @keyframes slideInUp {
-                0% {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                100% {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
             }
 
             .why-scroll-hint svg {
                 flex-shrink: 0;
-                width: 18px;
-                height: 14px;
-                animation: arrowBounce 2s cubic-bezier(.34, 1.56, .64, 1) infinite;
-            }
-
-            @keyframes arrowBounce {
-                0%, 100% {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-                50% {
-                    transform: translateX(6px);
-                    opacity: 0.6;
-                }
             }
 
             .counter-band {
@@ -3537,345 +3057,9 @@ Request-rate: 30/1m
             opacity: 1;
         }
     </style>
-
-    <!-- EMBEDDED BUILD & PROJECT CONFIGURATION -->
-    <script type="application/json" id="project-config">
-    {
-      "projectName": "Campus Crawiiings",
-      "version": "1.0.0",
-      "description": "Smart canteen management platform with in-app browser detection popup",
-      "dependencies": {
-        "terser": "^5.48.0"
-      },
-      "buildTools": {
-        "minifyScript": "Integrated into index.html - uses terser for JS/HTML minification",
-        "outputFile": "index.min.html (legacy, all code now in index.html)"
-      },
-      "buildProcess": {
-        "description": "Previously used minify.js Node.js script to minify HTML/CSS/JS",
-        "command": "node minify.js",
-        "status": "CONSOLIDATED - All code integrated into single index.html"
-      },
-      "features": [
-        "Enterprise-grade canteen management system",
-        "In-app browser detection and popup",
-        "PWA support with service worker",
-        "Responsive design (mobile-first)",
-        "Advanced animations and particle effects",
-        "Image optimization with Cloudinary",
-        "Structured data for SEO",
-        "Custom cursor effects"
-      ]
-    }
-    </script>
-
-    <!-- BUILD NOTES & INTEGRATION INFO
-    
-    ==========================================================
-    CONSOLIDATED BUILD INFORMATION (May 30, 2026)
-    ==========================================================
-    
-    ORIGINAL STRUCTURE:
-    - index.html (main file)
-    - index.min.html (minified version)
-    - minify.js (Node.js build script using terser)
-    - package.json (dependencies: terser@^5.48.0)
-    - package-lock.json (lock file for npm)
-    - tmp-script.js (temporary scripts)
-    
-    BUILD PROCESS:
-    The minify.js script performed:
-    1. HTML Minification: Removed comments, collapsed whitespace
-    2. JavaScript Minification: Used terser to compress code
-    3. JSON Minification: Compressed structured data
-    4. CSS Minification: Collapsed styles
-    5. Output: Created index.min.html
-    
-    CURRENT STATE (CONSOLIDATED):
-    - All code integrated into single index.html
-    - Ready to use without build process
-    - All features fully functional
-    - Includes popup system for in-app browser detection
-    
-    TO MINIFY (if needed):
-    - Use online tools: https://minifier.org
-    - Or use: https://cssnano.co for CSS
-    - Or use: https://terser.org/demo for JS
-    
-    ==========================================================
-    -->
-    <style>
-        /* In-App Browser Popup Styles */
-        .inapp-popup-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            animation: fadeInOverlay 0.4s ease-out;
-        }
-
-        @keyframes fadeInOverlay {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .inapp-popup-container {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.6);
-            max-width: 420px;
-            width: 100%;
-            padding: 32px 24px;
-            position: relative;
-            animation: popupSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            z-index: 10000;
-        }
-
-        @keyframes popupSlideIn {
-            from { opacity: 0; transform: scale(0.9) translateY(20px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
-
-        @media (prefers-color-scheme: dark) {
-            .inapp-popup-container {
-                background: linear-gradient(135deg, rgba(30, 30, 30, 0.95) 0%, rgba(20, 20, 20, 0.85) 100%);
-                border-color: rgba(255, 255, 255, 0.15);
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
-                color: rgba(255, 255, 255, 0.95);
-            }
-            .inapp-popup-icon { color: #ff4444; }
-            .inapp-popup-title { color: rgba(255, 255, 255, 0.95); }
-            .inapp-popup-message { color: rgba(255, 255, 255, 0.75); }
-            .inapp-popup-instructions { color: rgba(255, 255, 255, 0.7); }
-            .inapp-popup-instruction-item { color: rgba(255, 255, 255, 0.75); }
-            .inapp-popup-hint { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.8); }
-        }
-
-        .inapp-popup-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            display: block;
-            text-align: center;
-            animation: iconBounce 1s ease-in-out 0.3s;
-        }
-
-        @keyframes iconBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .inapp-popup-title {
-            font-size: 26px;
-            font-weight: 700;
-            color: #1a1a1a;
-            text-align: center;
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
-        }
-
-        .inapp-popup-message {
-            font-size: 14px;
-            color: #555;
-            text-align: center;
-            line-height: 1.6;
-            margin-bottom: 24px;
-        }
-
-        .inapp-popup-instructions-label {
-            font-size: 12px;
-            font-weight: 600;
-            color: #d32f2f;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .inapp-popup-instructions {
-            background: linear-gradient(135deg, rgba(211, 47, 47, 0.08) 0%, rgba(211, 47, 47, 0.04) 100%);
-            border-left: 3px solid #d32f2f;
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-bottom: 24px;
-            font-size: 13px;
-            color: #333;
-            line-height: 1.7;
-        }
-
-        .inapp-popup-instruction-item {
-            margin-bottom: 8px;
-            color: #444;
-        }
-
-        .inapp-popup-instruction-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .inapp-popup-instruction-number {
-            font-weight: 600;
-            color: #d32f2f;
-        }
-
-        .inapp-popup-hint {
-            background: rgba(211, 47, 47, 0.1);
-            border: 1px solid rgba(211, 47, 47, 0.2);
-            border-radius: 12px;
-            padding: 12px 14px;
-            margin-bottom: 24px;
-            font-size: 12px;
-            color: #d32f2f;
-            font-weight: 500;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            animation: hintPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes hintPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .inapp-popup-arrow {
-            display: inline-block;
-            animation: arrowBounce 1.5s ease-in-out infinite;
-            font-size: 16px;
-        }
-
-        @keyframes arrowBounce {
-            0%, 100% { transform: translateY(0) translateX(0); opacity: 1; }
-            50% { transform: translateY(-6px) translateX(4px); opacity: 0.7; }
-        }
-
-        .inapp-popup-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .inapp-popup-btn {
-            padding: 14px 20px;
-            border: none;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            outline: none;
-        }
-
-        .inapp-popup-btn-primary {
-            background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
-            color: white;
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4), 0 2px 4px rgba(211, 47, 47, 0.2);
-        }
-
-        .inapp-popup-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(211, 47, 47, 0.5), 0 2px 4px rgba(211, 47, 47, 0.3);
-        }
-
-        .inapp-popup-btn-primary:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3), 0 1px 2px rgba(211, 47, 47, 0.2);
-        }
-
-        .inapp-popup-btn-secondary {
-            background: rgba(211, 47, 47, 0.1);
-            color: #d32f2f;
-            border: 1.5px solid rgba(211, 47, 47, 0.3);
-        }
-
-        .inapp-popup-btn-secondary:hover {
-            background: rgba(211, 47, 47, 0.15);
-            border-color: rgba(211, 47, 47, 0.5);
-            transform: translateY(-1px);
-        }
-
-        .inapp-popup-btn-secondary:active {
-            transform: translateY(0);
-            background: rgba(211, 47, 47, 0.12);
-        }
-
-        @media (max-width: 480px) {
-            .inapp-popup-container { max-width: 100%; padding: 24px 16px; border-radius: 20px; }
-            .inapp-popup-title { font-size: 22px; margin-bottom: 10px; }
-            .inapp-popup-message { font-size: 13px; margin-bottom: 20px; }
-            .inapp-popup-icon { font-size: 40px; margin-bottom: 12px; }
-            .inapp-popup-instructions { font-size: 12px; padding: 10px 12px; }
-            .inapp-popup-hint { font-size: 11px; padding: 10px 12px; }
-            .inapp-popup-btn { padding: 12px 18px; font-size: 13px; }
-        }
-
-        @media (max-width: 360px) {
-            .inapp-popup-container { padding: 20px 12px; }
-            .inapp-popup-title { font-size: 20px; }
-            .inapp-popup-message { font-size: 12px; }
-            .inapp-popup-icon { font-size: 36px; }
-        }
-
-        .inapp-popup-hidden {
-            animation: fadeOutPopup 0.3s ease-out forwards;
-        }
-
-        @keyframes fadeOutPopup {
-            from { opacity: 1; transform: scale(1); }
-            to { opacity: 0; transform: scale(0.95); }
-        }
-    </style>
 </head>
 
 <body>
-
-    <!-- IN-APP BROWSER POPUP -->
-    <div id="inappPopupOverlay" class="inapp-popup-overlay" style="display: none;">
-        <div class="inapp-popup-container">
-            <span class="inapp-popup-icon">🚀</span>
-            <h1 class="inapp-popup-title">Unlock the Full Experience</h1>
-            <p class="inapp-popup-message">
-                You're currently viewing this website inside a social media browser. Some features, animations, authentication, payments, external links, and interactive elements may not work as intended.
-            </p>
-            <div class="inapp-popup-hint">
-                Tap ⋮ <span class="inapp-popup-arrow">→</span> Open in Browser
-            </div>
-            <div class="inapp-popup-instructions-label">How to Open in Your Browser:</div>
-            <div class="inapp-popup-instructions">
-                <div class="inapp-popup-instruction-item">
-                    <span class="inapp-popup-instruction-number">1.</span> Tap the ⋮ (three dots) menu in the top-right corner.
-                </div>
-                <div class="inapp-popup-instruction-item">
-                    <span class="inapp-popup-instruction-number">2.</span> Select "Open in Browser".
-                </div>
-                <div class="inapp-popup-instruction-item">
-                    <span class="inapp-popup-instruction-number">3.</span> Enjoy the complete website experience.
-                </div>
-            </div>
-            <div class="inapp-popup-buttons">
-                <button class="inapp-popup-btn inapp-popup-btn-primary" id="inappPopupGotIt">
-                    Got It
-                </button>
-                <button class="inapp-popup-btn inapp-popup-btn-secondary" id="inappPopupContinue">
-                    Continue Here
-                </button>
-            </div>
-        </div>
-    </div>
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -3912,10 +3096,10 @@ Request-rate: 30/1m
             <span class="nav-brand-name">Campus Crawiiings</span>
         </a>
         <ul class="nav-links">
-            <li><a href="#" id="n-home" class="active" data-action="navigate" data-target="home"><span class="nav-dot"></span>Home</a></li>
             <li><a href="#" id="n-about" data-action="navigate" data-target="about"><span class="nav-dot"></span>About</a></li>
-            <li><a href="#" id="n-services" data-action="navigate" data-target="services"><span class="nav-dot"></span>Services</a></li>
             <li><a href="#" id="n-clients" data-action="navigate" data-target="clients"><span class="nav-dot"></span>Clients</a></li>
+            <li><a href="#" id="n-home" class="active" data-action="navigate" data-target="home" style="font-size:14px;font-weight:600;"><span class="nav-dot"></span>Home</a></li>
+            <li><a href="#" id="n-services" data-action="navigate" data-target="services"><span class="nav-dot"></span>Services</a></li>
             <li><a href="#" id="n-contact" data-action="contact" class="nav-cta-btn">Contact</a></li>
         </ul>
         <!-- hamburger kept in DOM but hidden on mobile — bottom nav takes over -->
@@ -3931,49 +3115,6 @@ Request-rate: 30/1m
         <a href="#" data-action="navigate" data-target="clients" role="menuitem"><span class="drawer-dot"></span>Clients</a>
         <a href="#" data-action="navigate" data-target="services" role="menuitem"><span class="drawer-dot"></span>Services</a>
         <a href="#" data-action="contact" role="menuitem"><span class="drawer-dot"></span>Get In Touch</a>
-    </div>
-
-    <!-- ╔════════════════════════════════════════════════════════════╗
-         ║  INSTAGRAM IN-APP BROWSER DETECTION POPUP                ║
-         ║  Modern Glassmorphism UI with Premium Design              ║
-         ╚════════════════════════════════════════════════════════════╝ -->
-    <div id="instagram-popup" class="instagram-popup" role="dialog" aria-labelledby="instagram-popup-title">
-        <div class="instagram-popup-content">
-            <!-- Close Button -->
-            <button id="instagram-popup-close" class="instagram-popup-close" aria-label="Close popup" title="Close">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="4" y1="4" x2="16" y2="16"></line>
-                    <line x1="16" y1="4" x2="4" y2="16"></line>
-                </svg>
-            </button>
-
-            <!-- Rocket Icon -->
-            <div class="instagram-popup-icon">🚀</div>
-
-            <!-- Main Title -->
-            <h2 id="instagram-popup-title" class="instagram-popup-title">For the best experience</h2>
-
-            <!-- Subtitle -->
-            <p class="instagram-popup-subtitle">Open this site in your browser</p>
-
-            <!-- Instructions -->
-            <div class="instagram-popup-instructions">
-                <div class="instruction-step">
-                    <div class="instruction-number">1</div>
-                    <p class="instruction-text">Tap <span class="menu-icon">⋮</span> in the top-right corner</p>
-                </div>
-                <div class="instruction-arrow">↓</div>
-                <div class="instruction-step">
-                    <div class="instruction-number">2</div>
-                    <p class="instruction-text">Select "Open in Browser"</p>
-                </div>
-            </div>
-
-            <!-- CTA Button -->
-            <a href="#" id="instagram-popup-cta" class="instagram-popup-cta" target="_blank" rel="noopener">
-                Continue
-            </a>
-        </div>
     </div>
 
     <!-- IMPROVEMENT 2: BOTTOM NAV BAR (5 items, JioHotstar style) -->
@@ -5197,13 +4338,6 @@ Request-rate: 30/1m
 
                     let isJumping = false;
                     let rafPending = false;
-                    let lastScrollLeft = grid.scrollLeft;
-                    let scrollVelocity = 0;
-                    let lastTimestamp = 0;
-                    let momentumRaf = null;
-                    let isDragging = false;
-                    let lastPointerX = 0;
-                    let momentumEnabled = true;
 
                     const getActiveIndex = () => {
                         const scrollLeft = grid.scrollLeft;
@@ -5235,13 +4369,6 @@ Request-rate: 30/1m
                         }
                         dots.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
                             dot.classList.toggle('active', idx === realIndex);
-                            // Enhanced dot animation on active change
-                            if (idx === realIndex) {
-                                dot.style.animation = 'none';
-                                setTimeout(() => {
-                                    dot.style.animation = 'dotActivatePulse 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                                }, 10);
-                            }
                         });
                         rafPending = false;
                     };
@@ -5276,169 +4403,21 @@ Request-rate: 30/1m
                         }
                     };
 
-                    // ── ELITE MOMENTUM & VELOCITY TRACKING ──
-                    const onPointerDown = (e) => {
-                        isDragging = true;
-                        lastPointerX = e.clientX || e.touches?.[0].clientX || 0;
-                        lastTimestamp = Date.now();
-                        if (momentumRaf) cancelAnimationFrame(momentumRaf);
-                    };
-
-                    const onPointerMove = (e) => {
-                        if (!isDragging) return;
-                        const now = Date.now();
-                        const deltaScroll = grid.scrollLeft - lastScrollLeft;
-                        const deltaTime = Math.max(1, now - lastTimestamp);
-                        scrollVelocity = deltaScroll / deltaTime;
-                        lastScrollLeft = grid.scrollLeft;
-                        lastTimestamp = now;
-                    };
-
-                    const onPointerUp = () => {
-                        isDragging = false;
-                        if (!momentumEnabled || Math.abs(scrollVelocity) < 0.01) return;
-                        applyMomentumScroll();
-                    };
-
-                    // ── MOMENTUM SCROLL WITH DECELERATION ──
-                    const applyMomentumScroll = () => {
-                        let currentVelocity = scrollVelocity;
-                        const deceleration = 0.95; // 95% per frame
-                        const minVelocity = 0.001; // Stop when velocity is negligible
-
-                        const momentumLoop = () => {
-                            if (Math.abs(currentVelocity) < minVelocity) {
-                                // Snap to nearest card when momentum stops
-                                snapToNearestCard();
-                                return;
-                            }
-
-                            grid.scrollLeft += currentVelocity * 16; // 16ms frame
-                            currentVelocity *= deceleration;
-                            momentumRaf = requestAnimationFrame(momentumLoop);
-                        };
-
-                        momentumRaf = requestAnimationFrame(momentumLoop);
-                    };
-
-                    // ── SNAP TO NEAREST CARD ──
-                    const snapToNearestCard = () => {
-                        const items = allItems();
-                        const scrollLeft = grid.scrollLeft;
-                        let nearestCard = items[0];
-                        let minDistance = Infinity;
-
-                        items.forEach((card) => {
-                            if (card.classList.contains('carousel-clone')) return;
-                            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-                            const distance = Math.abs(cardCenter - (scrollLeft + grid.clientWidth / 2));
-                            if (distance < minDistance) {
-                                minDistance = distance;
-                                nearestCard = card;
-                            }
-                        });
-
-                        if (nearestCard) {
-                            grid.scrollTo({
-                                left: nearestCard.offsetLeft,
-                                behavior: 'smooth'
-                            });
-                            hapticFeedback('light');
-                        }
-                    };
-
-                    Utils.on(grid, 'pointerdown', onPointerDown, { passive: true });
-                    Utils.on(grid, 'pointermove', onPointerMove, { passive: true });
-                    Utils.on(grid, 'pointerup', onPointerUp, { passive: true });
-                    Utils.on(grid, 'pointercancel', onPointerUp, { passive: true });
-
                     Utils.on(grid, 'scroll', () => {
-                        const now = Date.now();
-                        if (!isDragging) {
-                            const deltaScroll = grid.scrollLeft - lastScrollLeft;
-                            const deltaTime = Math.max(1, now - lastTimestamp);
-                            scrollVelocity = deltaScroll / deltaTime;
-                        }
-                        
-                        lastScrollLeft = grid.scrollLeft;
-                        lastTimestamp = now;
-
                         if (!rafPending) {
                             rafPending = true;
                             requestAnimationFrame(() => {
                                 syncDots();
                                 handleInfiniteLoop();
-                                applyScrollAnimations();
                             });
                         }
                     }, {
                         passive: true
                     });
 
-                    // ── ELITE: Apply dynamic scale/opacity/parallax based on scroll position ──
-                    const applyScrollAnimations = () => {
-                        const items = allItems();
-                        const gridCenter = grid.scrollLeft + grid.clientWidth / 2;
-                        const scrollVelocityFactor = Math.min(Math.abs(scrollVelocity) * 20, 1);
-                        
-                        items.forEach((card, idx) => {
-                            if (card.classList.contains('carousel-clone')) return;
-                            
-                            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-                            const distanceFromCenter = gridCenter - cardCenter;
-                            const normalizedDistance = Math.min(Math.abs(distanceFromCenter) / (grid.clientWidth * 0.5), 1);
-                            
-                            // Enhanced easing with multiple curves for sophistication
-                            const easeProgress = normalizedDistance * normalizedDistance;
-                            
-                            // Sophisticated scale with velocity influence
-                            const baseScale = 1 - (easeProgress * 0.08);
-                            const velocityScale = 1 + scrollVelocityFactor * 0.04;
-                            const scale = baseScale * velocityScale;
-                            
-                            // Opacity with smooth falloff
-                            const opacity = 1 - (easeProgress * 0.35);
-                            
-                            // Brightness and saturation for depth
-                            const brightness = 1 - (easeProgress * 0.2);
-                            const saturate = 1 + (1 - normalizedDistance) * 0.15;
-                            
-                            // 3D Parallax: cards lean toward or away based on position
-                            const perspectiveDepth = distanceFromCenter * 0.15;
-                            const rotateY = Math.max(-8, Math.min(8, perspectiveDepth));
-                            
-                            // Apply transforms with GPU optimization
-                            card.style.transform = `scale(${scale}) perspective(1200px) rotateY(${rotateY}deg) translateZ(0)`;
-                            card.style.opacity = String(opacity);
-                            card.style.filter = `brightness(${brightness}) saturate(${saturate})`;
-                        });
-                    };
-
-                    // Initial animation call
-                    applyScrollAnimations();
-
-                    // ── ELITE TOUCH HAPTICS & FEEDBACK ──
-                    const hapticFeedback = (type = 'light') => {
-                        const patterns = {
-                            light: 4,
-                            medium: 8,
-                            heavy: 12,
-                            snap: [6, 2, 6]
-                        };
-                        const pattern = patterns[type];
-                        if (Array.isArray(pattern)) {
-                            pattern.forEach((duration, i) => {
-                                setTimeout(() => Utils.haptic(duration), i * 80);
-                            });
-                        } else {
-                            Utils.haptic(pattern);
-                        }
-                    };
-
-                    // ── ENHANCED DOT INTERACTION ──
+                    // Also update dot clicks to account for clone offset
                     dots.querySelectorAll('.carousel-dot').forEach((dot, index) => {
                         dot.onclick = Utils.safe(() => {
-                            hapticFeedback('medium');
                             const items = allItems();
                             const targetCard = items[index + 1]; // +1 for prepended clone
                             if (targetCard) {
@@ -5448,144 +4427,9 @@ Request-rate: 30/1m
                                 });
                             }
                         }, 'carouselDotClick');
-
-                        // Hover haptic feedback for dots
-                        dot.addEventListener('pointerenter', () => {
-                            hapticFeedback('light');
-                        }, { passive: true });
                     });
-
-                    // ── CARD CLICK HAPTIC & SCALE FEEDBACK ──
-                    getRealCards().forEach((card) => {
-                        Utils.on(card, 'pointerdown', () => {
-                            hapticFeedback('snap');
-                            card.style.transition = 'transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                            card.style.transform = `${card.style.transform} scale(0.95)`;
-                        }, { passive: true });
-
-                        Utils.on(card, 'pointerup', () => {
-                            card.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
-                            applyScrollAnimations();
-                        }, { passive: true });
-                    });
-
-                    // ── ADD CSS FOR DOT PULSE ANIMATION ──
-                    if (!document.getElementById('carousel-elite-styles')) {
-                        const style = document.createElement('style');
-                        style.id = 'carousel-elite-styles';
-                        style.textContent = `
-                            @keyframes dotActivatePulse {
-                                0% { box-shadow: 0 0 16px rgba(255, 44, 44, 0.8), 0 0 32px rgba(255, 44, 44, 0.4); }
-                                50% { box-shadow: 0 0 32px rgba(255, 44, 44, 1), 0 0 48px rgba(255, 44, 44, 0.6); }
-                                100% { box-shadow: 0 0 16px rgba(255, 44, 44, 0.8), 0 0 32px rgba(255, 44, 44, 0.4); }
-                            }
-                        `;
-                        document.head.appendChild(style);
-                    }
                 }
             };
-
-            // ╔════════════════════════════════════════════════════════════╗
-            // ║  INSTAGRAM IN-APP BROWSER DETECTION & POPUP HANDLER       ║
-            // ╚════════════════════════════════════════════════════════════╝
-            const InstagramDetector = {
-                // List of in-app browsers to detect
-                inAppBrowsers: [
-                    /Instagram/i,
-                    /FBAN|FBAV/i, // Facebook app
-                    /Line/i,
-                    /WhatsApp/i,
-                    /Telegram/i,
-                    /Messenger/i,
-                    /TikTok/i,
-                    /Snapchat/i
-                ],
-
-                isInAppBrowser() {
-                    const userAgent = navigator.userAgent;
-                    return this.inAppBrowsers.some(pattern => pattern.test(userAgent));
-                },
-
-                isInstagramApp() {
-                    return /Instagram/.test(navigator.userAgent);
-                },
-
-                init() {
-                    // Only show popup for Instagram app browser
-                    if (!this.isInstagramApp()) return;
-
-                    // Check if user has dismissed the popup before
-                    const dismissed = localStorage.getItem('instagramPopupDismissed');
-                    if (dismissed) return;
-
-                    // Show popup after slight delay for smooth UX
-                    setTimeout(() => {
-                        this.showPopup();
-                    }, 800);
-                },
-
-                showPopup() {
-                    const popup = Utils.query('#instagram-popup');
-                    if (!popup) return;
-
-                    // Add visible class to show popup
-                    popup.classList.add('visible');
-
-                    // Setup close button
-                    const closeBtn = Utils.query('#instagram-popup-close');
-                    if (closeBtn) {
-                        Utils.on(closeBtn, 'click', () => this.closePopup());
-                    }
-
-                    // Setup CTA button
-                    const ctaBtn = Utils.query('#instagram-popup-cta');
-                    if (ctaBtn) {
-                        Utils.on(ctaBtn, 'click', () => this.closePopup());
-                    }
-
-                    // Haptic feedback
-                    Utils.haptic(12);
-                },
-
-                closePopup() {
-                    const popup = Utils.query('#instagram-popup');
-                    if (!popup) return;
-
-                    // Add fade-out animation
-                    popup.style.animation = 'instagramPopupFadeOut 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
-
-                    // Remove after animation
-                    setTimeout(() => {
-                        popup.classList.remove('visible');
-                        popup.classList.add('hidden');
-                    }, 400);
-
-                    // Save dismissal in localStorage (persists for 30 days)
-                    const expiryDate = new Date();
-                    expiryDate.setDate(expiryDate.getDate() + 30);
-                    localStorage.setItem('instagramPopupDismissed', 'true');
-                    localStorage.setItem('instagramPopupExpiry', expiryDate.getTime());
-                }
-            };
-
-            // Add fade-out animation
-            if (!document.getElementById('instagram-popup-animations')) {
-                const style = document.createElement('style');
-                style.id = 'instagram-popup-animations';
-                style.textContent = `
-                    @keyframes instagramPopupFadeOut {
-                        0% {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                        100% {
-                            opacity: 0;
-                            transform: translateY(400px);
-                        }
-                    }
-                `;
-                document.head.appendChild(style);
-            }
 
             // ─── SCROLL & EFFECTS ───
             const Effects = {
@@ -5804,29 +4648,9 @@ Request-rate: 30/1m
                     if (!('serviceWorker' in navigator)) return;
 
                     Utils.on(window, 'load', Utils.safe(() => {
-                        try {
-                            // Get embedded service worker code
-                            const swScript = Utils.query('#service-worker-code');
-                            if (!swScript || !swScript.textContent) {
-                                Logger.warn('pwa', 'Service worker code not found');
-                                return;
-                            }
-
-                            // Create blob from embedded code
-                            const swBlob = new Blob([swScript.textContent], { type: 'application/javascript' });
-                            const swUrl = URL.createObjectURL(swBlob);
-
-                            // Register service worker from blob
-                            navigator.serviceWorker.register(swUrl, { scope: '/' })
-                                .then(() => {
-                                    Logger.log('pwa', 'Service Worker registered from embedded code');
-                                })
-                                .catch(e => {
-                                    Logger.warn('pwa', 'SW registration failed', e);
-                                });
-                        } catch (e) {
-                            Logger.error('registerServiceWorker', e);
-                        }
+                        navigator.serviceWorker.register('./sw.js')
+                            .then(() => Logger.log('pwa', 'Service Worker registered'))
+                            .catch(e => Logger.warn('pwa', 'SW registration failed', e));
                     }, 'registerSW'));
                 }
             };
@@ -5863,7 +4687,6 @@ Request-rate: 30/1m
                     Carousel.init();
                     Effects.initSwipe();
                     CursorFX.init();
-                    InstagramDetector.init();
 
                     // Setup keyboard nav
                     Utils.on(document, 'keydown', Utils.safe((e) => {
@@ -6206,129 +5029,6 @@ self.addEventListener('fetch', (event) => {
                 console.log('Service Worker registration failed:', err);
             });
         }
-    </script>
-
-    <!-- IN-APP BROWSER POPUP SCRIPT -->
-    <script>
-        // In-App Browser Popup Class
-        class InAppBrowserPopup {
-            constructor(options = {}) {
-                this.storageKey = options.storageKey || 'inappPopupDismissed';
-                this.dismissDuration = options.dismissDuration || 24 * 60 * 60 * 1000;
-                this.overlayId = options.overlayId || 'inappPopupOverlay';
-                this.gotItBtnId = options.gotItBtnId || 'inappPopupGotIt';
-                this.continueBtnId = options.continueBtnId || 'inappPopupContinue';
-                this.init();
-            }
-
-            init() {
-                if (this.isDismissed()) return;
-                if (this.isInAppBrowser()) {
-                    this.show();
-                    this.attachEventListeners();
-                }
-            }
-
-            isDismissed() {
-                const dismissedTime = localStorage.getItem(this.storageKey);
-                if (!dismissedTime) return false;
-                const currentTime = new Date().getTime();
-                const dismissedTimestamp = parseInt(dismissedTime, 10);
-                if (currentTime - dismissedTimestamp > this.dismissDuration) {
-                    localStorage.removeItem(this.storageKey);
-                    return false;
-                }
-                return true;
-            }
-
-            isInAppBrowser() {
-                const ua = navigator.userAgent || navigator.vendor || window.opera;
-                const inAppPatterns = [
-                    /Instagram/,
-                    /FBAN|FBAV|FB_IAB|FB4A/,
-                    /Messenger|MessengerAndroid|Messengeriosapp/,
-                    /WhatsApp/,
-                    /Telegram|TelegramBot/,
-                    /LinkedInApp|LinkedInMobileApp/,
-                    /TikTok|Musical/,
-                    /Snapchat/,
-                    /Twitter|Tweetbot|Twitterrific|TwitterAndroid|TwitteriPhone/,
-                    /Discord/,
-                    /Viber/,
-                    /WeChat|MicroMessenger/
-                ];
-                const isInApp = inAppPatterns.some(pattern => pattern.test(ua));
-                if (isInApp) return true;
-                return this.isWebView();
-            }
-
-            isWebView() {
-                const ua = navigator.userAgent || '';
-                const standardBrowsers = /Chrome\/|Safari\/|Firefox\/|Opera\/|Edg\/|MSIE|Trident/;
-                if (standardBrowsers.test(ua)) return false;
-                return /Linux; Android.*AppleWebKit|iPhone.*AppleWebKit/.test(ua) && !/Chrome|Firefox|Edge|Opera|Safari/.test(ua);
-            }
-
-            show() {
-                const overlay = document.getElementById(this.overlayId);
-                if (overlay) {
-                    overlay.style.display = 'flex';
-                    void overlay.offsetWidth;
-                }
-            }
-
-            hide() {
-                const overlay = document.getElementById(this.overlayId);
-                if (overlay) {
-                    const container = overlay.querySelector('.inapp-popup-container');
-                    if (container) {
-                        container.classList.add('inapp-popup-hidden');
-                        setTimeout(() => {
-                            overlay.style.display = 'none';
-                            container.classList.remove('inapp-popup-hidden');
-                        }, 300);
-                    } else {
-                        overlay.style.display = 'none';
-                    }
-                }
-            }
-
-            dismiss() {
-                const currentTime = new Date().getTime();
-                localStorage.setItem(this.storageKey, currentTime.toString());
-                this.hide();
-            }
-
-            attachEventListeners() {
-                const gotItBtn = document.getElementById(this.gotItBtnId);
-                const continueBtn = document.getElementById(this.continueBtnId);
-                const overlay = document.getElementById(this.overlayId);
-
-                if (gotItBtn) {
-                    gotItBtn.addEventListener('click', () => this.dismiss());
-                }
-                if (continueBtn) {
-                    continueBtn.addEventListener('click', () => this.dismiss());
-                }
-                if (overlay) {
-                    overlay.addEventListener('click', (e) => {
-                        if (e.target === overlay) this.dismiss();
-                    });
-                }
-            }
-        }
-
-        // Initialize popup when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                new InAppBrowserPopup();
-            });
-        } else {
-            new InAppBrowserPopup();
-        }
-
-        // Expose to global scope for custom initialization
-        window.InAppBrowserPopup = InAppBrowserPopup;
     </script>
 
 </body>
