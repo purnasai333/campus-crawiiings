@@ -3426,7 +3426,6 @@ Request-rate: 30/1m
             .inapp-popup-message { color: rgba(255, 255, 255, 0.75); }
             .inapp-popup-instructions { color: rgba(255, 255, 255, 0.7); }
             .inapp-popup-instruction-item { color: rgba(255, 255, 255, 0.75); }
-            .inapp-popup-hint { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.2); color: rgba(255, 255, 255, 0.8); }
         }
 
         .inapp-popup-icon {
@@ -3494,33 +3493,6 @@ Request-rate: 30/1m
             color: #d32f2f;
         }
 
-        .inapp-popup-hint {
-            background: rgba(211, 47, 47, 0.1);
-            border: 1px solid rgba(211, 47, 47, 0.2);
-            border-radius: 12px;
-            padding: 12px 14px;
-            margin-bottom: 24px;
-            font-size: 12px;
-            color: #d32f2f;
-            font-weight: 500;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            animation: hintPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes hintPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .inapp-popup-arrow {
-            display: inline-block;
-            font-size: 16px;
-        }
-
         .inapp-popup-buttons {
             display: flex;
             flex-direction: column;
@@ -3579,7 +3551,6 @@ Request-rate: 30/1m
             .inapp-popup-message { font-size: 13px; margin-bottom: 20px; }
             .inapp-popup-icon { font-size: 40px; margin-bottom: 12px; }
             .inapp-popup-instructions { font-size: 12px; padding: 10px 12px; }
-            .inapp-popup-hint { font-size: 11px; padding: 10px 12px; }
             .inapp-popup-btn { padding: 12px 18px; font-size: 13px; }
         }
 
@@ -3611,9 +3582,6 @@ Request-rate: 30/1m
             <p class="inapp-popup-message">
                 You're currently viewing this website inside a social media browser. Some features, animations, authentication, payments, external links, and interactive elements may not work as intended.
             </p>
-            <div class="inapp-popup-hint">
-                Tap ⋮ <span class="inapp-popup-arrow">→</span> Open in Browser
-            </div>
             <div class="inapp-popup-instructions-label">How to Open in Your Browser:</div>
             <div class="inapp-popup-instructions">
                 <div class="inapp-popup-instruction-item">
